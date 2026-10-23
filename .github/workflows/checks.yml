@@ -1,0 +1,63 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: VERSION is semver
+        run: grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$' VERSION
+      - name: No teacher files tracked
+        run: |
+          grep -qx '\*.local.md' .gitignore
+          if git ls-files | grep -E '\.local\.md$'; then exit 1; fi
+      - name: Shell scripts parse
+        run: for script in setup/*.sh; do bash -n "$script"; done
+      - name: PowerShell scripts parse
+        shell: pwsh
+        run: |
+          foreach ($script in Get-ChildItem setup/*.ps1) {
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($script.FullName, [ref]$null, [ref]$errors) | Out-Null
+            if ($errors) { $errors | Format-List; exit 1 }
+          }
+
+  # Links into scratch folders, so nothing outside the runner's temp folder changes.
+  linker-unix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Link task skills
+        run: |
+          root="$RUNNER_TEMP/skills"
+          other="$RUNNER_TEMP/other/skills/course-material-link-check"
+          mkdir -p "$root" "$other" && touch "$other/SKILL.md"
+          ln -s "$other" "$root/course-material-link-check"
+          bash setup/link-task-skills.sh "$root" 2> err.txt
+          for task_skill in skills/*/; do test -f "$root/$(basename "$task_skill")/SKILL.md"; done
+          test "$(readlink "$root/course-material-link-check")" = "$other"
+          grep -q 'another repository' err.txt
+          bash setup/link-task-skills.sh "$root" "$GITHUB_WORKSPACE"
+
+  linker-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Link task skills
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $root = Join-Path $env:RUNNER_TEMP 'skills'
+          & .\setup\link-task-skills.ps1 -SkillsRoot $root
+          & .\setup\link-task-skills.ps1 -SkillsRoot $root -RepoDir $env:GITHUB_WORKSPACE
+          foreach ($taskSkill in Get-ChildItem -Directory skills) {
+            if (-not (Test-Path (Join-Path $root "$($taskSkill.Name)\SKILL.md"))) { throw "$($taskSkill.Name) isn't linked" }
+          }
