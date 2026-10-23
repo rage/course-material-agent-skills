@@ -1,0 +1,88 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: VERSION is semver
+        run: grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$' VERSION
+      - name: Shell scripts parse
+        run: for script in setup/*.sh; do bash -n "$script"; done
+      - name: PowerShell scripts parse
+        shell: pwsh
+        run: |
+          foreach ($script in Get-ChildItem setup/*.ps1) {
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($script.FullName, [ref]$null, [ref]$errors) | Out-Null
+            if ($errors) { $errors | Format-List; exit 1 }
+          }
+
+  # Runs the setup scripts against this checkout with stub agent commands, so nothing
+  # outside the runner's scratch home is configured.
+  setup-unix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        agent: [claude, codex]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Run install.sh
+        run: |
+          git branch -f ci-setup HEAD
+          stubs="$RUNNER_TEMP/stubs"; mkdir -p "$stubs"
+          printf '#!/bin/sh\nexit 0\n' > "$stubs/${{ matrix.agent }}"; chmod +x "$stubs/${{ matrix.agent }}"
+          export HOME="$RUNNER_TEMP/home"; mkdir -p "$HOME"
+          PATH="$stubs:$PATH" COURSE_MATERIAL_SKILLS_REPO="$GITHUB_WORKSPACE" COURSE_MATERIAL_SKILLS_BRANCH=ci-setup \
+            bash setup/install.sh --agent ${{ matrix.agent }} --yes --no-playwright
+          if [ "${{ matrix.agent }}" = claude ]; then
+            test -f "$HOME/.claude/skills/course-material/SKILL.md"
+            for task_skill in skills/*/; do test -f "$HOME/.claude/skills/$(basename "$task_skill")/SKILL.md"; done
+            grep -q 'pull --ff-only' "$HOME/.claude/settings.json"
+          else
+            test -f "$HOME/.agents/skills/course-material/SKILL.md"
+            grep -q 'pull' "$HOME/.codex/rules/course-material-agent-skills.rules"
+          fi
+
+  setup-windows:
+    strategy:
+      matrix:
+        agent: [claude, codex]
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Run install.ps1
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          git branch -f ci-setup HEAD
+          $stubs = Join-Path $env:RUNNER_TEMP 'stubs'
+          New-Item -ItemType Directory -Force -Path $stubs | Out-Null
+          Set-Content -Path (Join-Path $stubs '${{ matrix.agent }}.cmd') -Value "@echo off`r`nexit /b 0"
+          $env:PATH = "$stubs;$env:PATH"
+          $env:USERPROFILE = Join-Path $env:RUNNER_TEMP 'home'
+          New-Item -ItemType Directory -Force -Path $env:USERPROFILE | Out-Null
+          $env:COURSE_MATERIAL_SKILLS_REPO = $env:GITHUB_WORKSPACE
+          $env:COURSE_MATERIAL_SKILLS_BRANCH = 'ci-setup'
+          & .\setup\install.ps1 -Agent ${{ matrix.agent }} -Yes -Playwright no
+          if ('${{ matrix.agent }}' -eq 'claude') {
+            $skills = Join-Path $env:USERPROFILE '.claude\skills'
+            foreach ($taskSkill in Get-ChildItem -Directory skills) {
+              if (-not (Test-Path (Join-Path $skills "$($taskSkill.Name)\SKILL.md"))) { throw "$($taskSkill.Name) isn't linked" }
+            }
+            $settings = Get-Content (Join-Path $env:USERPROFILE '.claude\settings.json') -Raw | ConvertFrom-Json
+            if (@($settings.permissions.allow).Count -lt 1) { throw 'No allow rule written' }
+          } else {
+            if (-not (Test-Path (Join-Path $env:USERPROFILE '.agents\skills\course-material\SKILL.md'))) { throw 'Skill not cloned' }
+            if (-not (Test-Path (Join-Path $env:USERPROFILE '.codex\rules\course-material-agent-skills.rules'))) { throw 'Rules not written' }
+          }
