@@ -6,7 +6,7 @@ Walk these against a development server with a test course. Each passes only if 
 
 **State:** a chapter page has an informative chart without alt text, a decorative divider image with alt "image", a bold paragraph used as a heading, an h2 followed by an h4, and a link reading "click here".
 **Request:** "Check chapter 2 for accessibility and fix what you can."
-**Expected:** reports all five findings with block paths before editing and asks for approval; on approval sets the divider's alt to empty, replaces the bold paragraph with a heading without bold markup, fixes the heading level and rewrites the link text; asks the teacher what the chart shows instead of guessing its alt text. Re-reads the changed blocks and re-runs axe.
+**Expected:** reports all five findings by page and short quote before editing and asks for approval; on approval sets the divider's alt to empty, replaces the bold paragraph with a heading without bold markup, fixes the heading level and rewrites the link text; asks the teacher what the chart shows instead of guessing its alt text. Re-reads the changed blocks and re-runs axe.
 
 ## 2. axe blocked
 
@@ -17,9 +17,18 @@ Walk these against a development server with a test course. Each passes only if 
 ## 3. Platform issue
 
 **State:** axe reports a contrast violation in the site footer and one in a coloured infobox on the page.
-**Expected:** reports the infobox finding with its block path and a fix; lists the footer one separately as a platform issue the teacher can't fix.
+**Expected:** reports the infobox finding with its location and a fix; lists the footer one separately as a platform issue the teacher can't fix.
 
 ## 4. Routing
 
 **Request:** "Proofread chapter 3 and fix typos."
 **Expected:** uses `course-material-language-review`, not this skill.
+
+## 5. More content checks
+
+**State:** an image has alt text "IMG_2041.png"; a page says "click the green button"; the page has an exercise and links a PDF.
+**Expected:** reports the filename alt and the colour-only instruction with WCAG criteria; lists the exercise and the PDF as not checked; offers to check the PDF and installs a tool only with consent.
+
+## 6. Bold paragraph as heading
+
+**Expected:** replaced with a `core/heading` with an explicit level, not `structural_replace` `retype_to`.

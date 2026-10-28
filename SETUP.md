@@ -37,20 +37,37 @@ You can remove the agent's access at any time on your account page on courses.mo
 Start your agent and ask for what you need. For example:
 
 - "List my courses on courses.mooc.fi."
+- "Check part 3: links, language and facts." ("Tarkista osa 3: linkit, kieli ja faktat.")
 - "Check the links in my course."
-- "Check the facts in chapter 1."
+- "Check the facts in chapter 1. Is it still up to date?"
 - "Check the language of the first chapter. Use plain language."
 - "Check the accessibility of the course front page."
 - "Split chapter 4 into two chapters."
 - "Update the English version of the course to match the Finnish version."
+- "I copied last year's course. Prepare it for the autumn run."
+- "A student wrote that the example on page 2 has an error." (Paste the message.)
+- "Read chapter 3 as a beginner would. Where would students get stuck?"
+- "Are the answers to the quizzes in chapter 2 right?"
 
 The agent tells you what it changed.
 
-## Your writing preferences
+## What the agent remembers
 
-When you ask the agent to change how it writes, for example "use sentence case in headings", it may ask whether to remember that. If you say yes, it saves the rule in `preferences.local.md` in the skills folder and follows it from then on. You can also edit that file yourself; `preferences.example.md` next to it shows the format.
+The agent saves rules only when you ask it to, or when you say yes to its offer. It keeps them in three files in the `.local` folder inside the skills folder:
 
-Your preferences apply to text the agent writes. Where a course already uses a term or style consistently, the agent keeps to the course and tells you about the difference.
+- `preferences.md`: how text is written, for example "Headings in sentence case."
+- `course-rules.md`: what content goes where and what the agent may edit, for example "Chapter 5 is frozen."
+- `workflow.md`: how the agent works, for example which checks a review includes.
+
+You can edit these files yourself. The files `preferences.example.md`, `course-rules.example.md` and `workflow.example.md` in the skills folder show the format. The agent never deletes them.
+
+The agent also keeps short notes about each course there, such as which courses are language versions of each other, and keeps them tidy.
+
+Some things are never remembered: the agent always asks you before it publishes, makes changes that could affect students, installs software or runs code.
+
+Where a course already uses a term or style consistently, the agent keeps to the course and tells you about the difference.
+
+The `.local` folder stays on your computer. It is lost if you delete the skills folder or clone it again. If you use two agents, for example Claude Code and Codex, each has its own folder and its own memory.
 
 ## Your own skills
 
@@ -70,7 +87,7 @@ The agent can undo changes. Ask it, for example: "Undo the changes you made to p
 
 ## Updates
 
-The agent updates the skills itself when courses.mooc.fi tells it that a new version is available. You don't need to do anything. The updates come from this public repository, and the setup lets the agent fetch them without asking you each time. Updates never change your preferences.
+The agent updates the skills itself when courses.mooc.fi tells it that a new version is available. You don't need to do anything. The updates come from this public repository, and the setup lets the agent fetch them without asking you each time. Updates never change what the agent remembers.
 
 To update by hand, run this command:
 
@@ -82,15 +99,14 @@ git -C ~/.agents/skills/course-material pull --ff-only    # Codex
 ## Remove
 
 1. Remove the connection: `claude mcp remove courses-mooc-fi` or `codex mcp remove courses-mooc-fi`.
-2. To keep your preferences, move `preferences.local.md` out of the skills folder first, for example to your home folder.
-3. Delete the skills folder: `~/.claude/skills/course-material` (Claude Code) or `~/.agents/skills/course-material` (Codex). For Claude Code, also delete the links called `course-material-...` in `~/.claude/skills`.
-4. Remove the agent's access on your account page on courses.mooc.fi.
+2. To keep what the agent remembers, copy the `.local` folder out first. Delete the skills folder: `~/.claude/skills/course-material` (Claude Code) or `~/.agents/skills/course-material` (Codex). For Claude Code, also delete the links called `course-material-...` in `~/.claude/skills`.
+3. Remove the agent's access on your account page on courses.mooc.fi.
 
 ## Problems
 
 - **The agent says it can't find the courses.mooc.fi tools.** Start a new session. In Claude Code, type `/mcp` and sign in to `courses-mooc-fi`. In Codex, run `codex mcp login courses-mooc-fi`.
 - **Codex says the protocol version isn't supported.** Run `codex features enable mcp_2026_07_28` and start a new session.
-- **The agent can't update the skills.** You may have changed files in the skills folder. Ask the agent to show what changed, and move your changes away; your `preferences.local.md` can stay.
+- **The agent can't update the skills.** You may have changed files in the skills folder. Ask the agent to show what changed, and move your changes away; the `.local` folder can stay.
 - **Something else in the setup is missing.** Paste the setup prompt again. The agent updates what's there and redoes only the missing steps.
 
 ## Installed with the old setup script?

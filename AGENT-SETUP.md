@@ -3,7 +3,7 @@
 You cloned this repository as `course-material` into the user-level skills folder: Claude Code `~/.claude/skills` (or `$CLAUDE_CONFIG_DIR/skills`), Codex `~/.agents/skills`. Below, `<skills folder>` is that folder and `<skill folder>` the clone, both absolute. On Windows, also follow [setup/windows.md](setup/windows.md).
 
 - Before each step, tell the teacher in one sentence what it does. Ask with your question tool (plain text if you have none) and recommend an option.
-- Delete or overwrite nothing you didn't create in this setup without asking; change no tracked file in the clone; never delete or empty an existing `*.local.md` file.
+- Delete or overwrite nothing you didn't create in this setup without asking; change no tracked file in the clone; never delete the teacher's files in `<skill folder>/.local/` or change them beyond step 6.
 - Another agent harness: do the same as the Claude Code or Codex steps the way your harness does it (skills folder, MCP server, allow rule).
 - Folder-only install, if the teacher asks: work out the matching paths for your client, follow the same steps, and tell the teacher to start the agent in that folder.
 - Existing install: `git -C <skill folder> pull --ff-only`, then redo only the steps whose result is missing.
@@ -49,17 +49,17 @@ Allow exactly `git -C <skill folder> pull --ff-only`, with the path written as [
   )
   ```
 
-## 5. Preferences
+## 5. What the agent remembers
 
-Create an empty `<skill folder>/preferences.local.md` unless it exists. Tell the teacher you can offer to remember style changes there, and that they can edit it (format: `preferences.example.md`).
+Create no file. Tell the teacher that, when they ask, you remember how they want text written, what content goes where and how you should work, in `<skill folder>/.local/` (`preferences.md`, `course-rules.md`, `workflow.md`; formats in the `*.example.md` files), and that they can edit those files themselves.
 
 ## 6. Private skills repository
 
-Always ask: use an existing one, create one, or skip; when `<skill folder>/private-skills.local.md` exists, keeping that one is the first option. Recommend skipping unless the teacher plans skills of their own ([references/skill-placement.md](references/skill-placement.md)).
+Always ask: use an existing one, create one, or skip; when `<skill folder>/.local/workflow.md` has a `Private skills:` line, keeping that one is the first option. Recommend skipping unless the teacher plans skills of their own ([references/skill-placement.md](references/skill-placement.md)).
 
 - Existing: ask where it is; clone it into `<skills folder>` if it isn't on this computer.
 - New: `git init <skills folder>/private-skills` with a `skills/` folder. If `git config user.email` is empty, ask for the name and email to commit with.
-- Write its absolute path as the only line of `<skill folder>/private-skills.local.md`, and allow `git -C <private repo> pull --ff-only` as in step 4.
+- Write `Private skills: <absolute path>` in `<skill folder>/.local/workflow.md` (create the file with a `# Workflow` heading if missing; if a different path is there, ask first), and allow `git -C <private repo> pull --ff-only` as in step 4.
 - Claude Code: run `bash <skill folder>/setup/link-task-skills.sh <skills folder> <private repo>`, and add a post-merge hook in the private repository that runs the same command.
 - Codex: if the repository is outside `~/.agents/skills`, link its `skills/` folder there.
 - Push: ask whether to keep a copy on a git host; recommend no unless they use several computers. Create the remote repository as private and check its visibility before the first push (GitHub: `gh repo view <repo> --json visibility`); if you can't check, ask the teacher to check it on the host's website.

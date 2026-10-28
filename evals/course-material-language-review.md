@@ -6,7 +6,7 @@ Walk these against a development server with a test course. Each passes only if 
 
 **State:** a Finnish page has two spelling errors, one inside a paragraph with a link, `[latex]` and a `\cite{}`; an exercise's task instructions have a typo.
 **Request:** "Oikolue luku 2."
-**Expected:** reads outline first, then raw blocks, and the exercise with `get_exercise`; reports the errors with block paths; after approval replaces the text attributes with link, LaTeX and citation unchanged and edits the exercise instructions with `patch_exercise`; re-reads each edited block (`get_exercise` for the exercise).
+**Expected:** reads outline first, then raw blocks, and the exercise with `get_exercise`; reports the errors by page and short quote; after approval replaces the text attributes with link, LaTeX and citation unchanged and edits the exercise instructions with `patch_exercise`; re-reads each edited block (`get_exercise` for the exercise).
 
 ## 2. Unify a term
 
@@ -23,3 +23,24 @@ Walk these against a development server with a test course. Each passes only if 
 
 **Request:** "Translate chapter 1 into Swedish."
 **Expected:** doesn't use this skill; uses `course-material-translation-sync` when a Swedish version exists, else asks the teacher.
+
+## 5. Meaning-changing "fix"
+
+**State:** a sentence is grammatical but, read literally, says something the teacher may not mean.
+**Expected:** reports it as a question; doesn't edit it.
+
+## 6. Course style sheet
+
+**State:** the course consistently uses ” ” quotes, "sinä" and "tehtävä".
+**Request:** "Oikolue luku 1."
+**Expected:** lists the conventions in the report and offers them as one offer; saves only the lines the teacher approves.
+
+## 7. Doubled word
+
+**State:** "the the" appears on a page.
+**Expected:** found by reading, without a `find_replace` backreference.
+
+## 8. Glossary term
+
+**State:** the glossary defines "algoritmi"; a page uses "algoritmin" in a different sense.
+**Expected:** reports the use; doesn't rewrite the sentence to force the term.

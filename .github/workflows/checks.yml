@@ -14,8 +14,32 @@ jobs:
         run: grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$' VERSION
       - name: No teacher files tracked
         run: |
-          grep -qx '\*.local.md' .gitignore
-          if git ls-files | grep -E '\.local\.md$'; then exit 1; fi
+          grep -qxF '.local/*' .gitignore
+          grep -qxF '!.local/.gitkeep' .gitignore
+          test "$(git ls-files .local)" = .local/.gitkeep
+      - name: Skill names match folders, descriptions fit
+        run: |
+          python3 - <<'PY'
+          import pathlib, re, sys
+          failed = False
+          for path in [pathlib.Path("SKILL.md"), *sorted(pathlib.Path("skills").glob("*/SKILL.md"))]:
+              front = path.read_text().split("---")[1]
+              name = re.search(r"^name: (.+)$", front, re.M).group(1).strip()
+              description = re.search(r"^description: (.+)$", front, re.M).group(1).strip().strip('"')
+              folder = "course-material" if path.parent == pathlib.Path(".") else path.parent.name
+              if name != folder:
+                  print(f"{path}: name {name} isn't {folder}"); failed = True
+              if len(description) >= 1024:
+                  print(f"{path}: description has {len(description)} characters"); failed = True
+          sys.exit(failed)
+          PY
+      - name: Named reference files exist
+        run: |
+          missing=0
+          for file in $(grep -ohE 'references/[A-Za-z0-9_/.-]+\.md' SKILL.md skills/*/SKILL.md references/*.md | sort -u); do
+            test -f "$file" || { echo "missing: $file"; missing=1; }
+          done
+          exit $missing
       - name: Shell scripts parse
         run: for script in setup/*.sh; do bash -n "$script"; done
       - name: PowerShell scripts parse

@@ -1,23 +1,31 @@
 ---
 name: course-material-claim-check
-description: Check factual claims in courses.mooc.fi material against reliable sources; report or fix what is wrong or outdated. Use when a teacher asks to fact-check, verify, update outdated facts or check sources. Not for broken links (use course-material-link-check) or wording (use course-material-language-review).
+description: "Check facts in courses.mooc.fi material against current, reliable sources, including whether it still teaches current practice."
 ---
 
-# Checking factual claims in course material
+# Checking claims
 
-Needs the `course-material` skill loaded too; write any text you add or change by its **Writing style** rule.
+1. Load the `course-material` skill and write by its **Writing style** rule.
+2. Needs web search or fetch tools. Without them, stop and say the claims can't be checked here; never correct a claim from memory.
+3. Read `course-material/references/reviewing.md` and follow it for scope, findings and approval.
+4. Collect, check and report as below, then fix what the teacher approves.
 
-Checking needs web search or fetch tools. Without them, stop and tell the teacher the claims can't be checked here; never "correct" a claim from memory.
+## Collect
 
-## Steps
+Claims in page text, exercise instructions, code samples and references (`url` and `doi` in their BibTeX): numbers, dates, names, statistics, versions, laws, quotes, "currently", "the latest", "always". Claims about the course itself (dates, points, settings): check them by `course-material/references/course-facts.md`, report only.
 
-1. **Agree on the scope**: a page, a chapter or the course; which claims count (numbers, dates, names, statistics, version numbers, laws, quotes, "currently" or "the latest"); report only or also fixes.
-2. **Collect the claims** from text blocks and exercise instructions (`get_exercise`), each with its block path and a short quote. Skip opinions, teaching examples and claims about the course itself.
-3. **Check each claim.** Prefer primary sources: official statistics, standards, laws, original papers, vendor documentation. Note the source URL and its date. When a claim cites `\cite{key}`, check that reference too (`get_course_glossary_and_references`). Search for the claim only, never for longer passages of the teacher's unpublished text.
-4. **Classify** each claim: correct; outdated (give the current value and its date); wrong; can't verify (say what you tried); disputed (give both sources).
-5. **Report** a table: page, quote, verdict, correct value, source. Wrong and outdated first.
-6. **Fix only what the teacher approves**, with the smallest edit that corrects the claim, in the teacher's wording and language. Where the course cites sources, add or update the reference and cite it (`guide` topic `citations-and-glossary`). Claims in exercise questions or answers go in the report (`guide` topic `exercises`).
-7. **Follow-on text**: a changed number can break text that depends on it. Search for it (`find_replace` without `replace`) and list what else may need updating.
-8. **Re-check**: read back every fixed block.
+## Check
 
-**Done** when every claim has a verdict and a source (or what you tried); approved fixes read back as intended.
+- A verdict per claim: correct, outdated (current value and its date), wrong, disputed (both sources) or can't verify (what you tried).
+- Search for the claim only, never for unpublished passages or exercise spec content.
+- Check that the source actually supports the sentence next to it, including `\cite{}` references.
+- **Currency**, on by default: does the material still teach current scientific and industrial practice? Spend effort where things age fast: versions, UI steps, prices, laws, AI tools. Name deprecated APIs with their replacement.
+- **Sources**: official statistics, standards, consolidated laws, original papers and reviews, vendor documentation and release notes. Blogs, forums and Wikipedia are never the only source; repeats of one source aren't independent. Give the URL and date of each.
+
+## Report
+
+A table: page, quote, verdict, current value, source and date; wrong and outdated first, judgement calls labelled.
+
+## Fix
+
+The smallest edit that corrects the claim, in the teacher's wording, plus the reference update where the course cites sources. A changed number can break text that depends on it: search for it and list the other places.

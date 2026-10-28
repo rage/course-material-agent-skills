@@ -1,37 +1,35 @@
 ---
 name: course-material-link-check
-description: Find and fix broken or outdated links, images and files in courses.mooc.fi material. Use when a teacher asks about broken or dead links, missing images or links to old pages, or after content moved. Not for moving content (use course-material-restructuring) or link wording alone (use course-material-accessibility-review).
+description: "Find and fix broken or outdated links, images, files, videos and DOIs in courses.mooc.fi material."
 ---
 
-# Checking links in course material
+# Checking links
 
-Needs the `course-material` skill loaded too; write any text you add or change by its **Writing style** rule.
+1. Load the `course-material` skill and write by its **Writing style** rule.
+2. Read `course-material/references/reviewing.md` and follow it for scope, findings and approval.
+3. Collect, check and report as below, then fix what the teacher approves.
 
-## Steps
+## Collect
 
-1. **Agree on the scope**: a page, a chapter or the course; fix or only report. On a large course, work chapter by chapter (`scope.chapter`), then each top-level page (`scope.page`).
-2. **Collect the links** with `find_replace` without `replace`: `{"find": "href=|src=|https?://|mailto:|^/", "regex": true, "attributes": ["/.*/"]}`. This covers rich text, block attributes (`url`, `href`) and exercise instructions. Previews are truncated: read matching blocks raw for full URLs. Record block path and link text; check each unique URL once.
-3. **Check internal links**: relative paths, `#anchors`, and links containing `/<course slug>/` (slug from `list_courses`).
-   - Compare the path with the pages' `url_path` in `get_course_structure`.
-   - An old path still works through a redirect; update it to the current path.
-   - A path no page has is broken. Ask the teacher where the content went.
-   - A link to a hidden page works only for the teacher; report it.
-   - An `#anchor` must exist on the target page; check it in the page's preview.
-4. **Check external links.** Fetch each URL (HEAD, then GET if HEAD fails), following redirects:
-   - 2xx: fine
-   - 3xx to another site or a generic page: likely moved; find the new address
-   - 404 or 410: broken
-   - 401, 403, 429 or timeouts: can't tell (bot blocking); report as "check by hand", don't change
-   - `http://` that also works with `https://`: suggest `https://`
-   - `mailto:`: check the address looks right; send nothing
-5. **Check images and files**: in each page's preview, `playwright-cli requests` lists failed loads; otherwise fetch the URLs directly.
-6. **Report** a table: page, link text, URL, status, suggested fix. Broken links first.
-7. **Fix what the teacher approves.** For a replacement address prefer the same organisation's new page, or an archived copy (`https://web.archive.org/...`) the teacher agrees to. The link text must still match the target.
-8. **Re-check**: run steps 3 to 5 again on the changed links.
+- Per chapter, `find_replace` without `replace`: `{"find": "href=|src=|https?://|mailto:|^/", "regex": true, "attributes": ["/.*/"]}`. It covers rich text, block attributes such as button `url`, relative `/paths` and exercise instructions. Previews are truncated: read the hit blocks raw for full URLs.
+- `url` and `doi` in each reference's `bibtex` from `get_course_glossary_and_references`.
+- Check each unique URL once; remember every place it appears.
 
-**Done** when every link is fine, fixed, declined or marked "check by hand".
+## Check
 
-## Care
+- **Internal** (relative paths and absolute URLs into this course): compare paths with `url_path` in `get_course_structure`. An old path works through a redirect but should be updated; a path no page has is broken: ask where the content went, never guess. A link to a hidden page works only for the teacher. Check `#anchors` on the target page's preview.
+- **Other courses.mooc.fi courses**: report each as "intended?"; it may point at last year's run.
+- **External**: status from `curl` (HEAD, then GET when HEAD fails, following redirects), never from a fetch tool that summarises pages. 404 and 410 are broken; a redirect to another site or a generic page means moved; 401, 403, 429 and timeouts mean "check by hand", left unchanged. Suggest `https://` where it works.
+- **Soft 404s**: a 200 page that says "not found" or lands on a front page.
+- **Videos**: removed or private YouTube and Vimeo videos fail their oEmbed endpoint.
+- **DOIs**: resolve through `https://doi.org/`.
+- **Images and files**: failed loads in the preview (how: `course-material/references/visual-checks.md`), else fetch them.
+- `mailto:` addresses are checked by eye, never sent. Submit no forms, follow no log-ins, and keep to a few requests a second per host.
 
-- Don't follow log-in pages or forms; submit nothing.
-- At most a few requests a second per host.
+## Report
+
+A table: page, link text, URL, status, suggested fix; broken first, "check by hand" last.
+
+## Fix
+
+Change the attribute with `patch_page_content`, or the literal URL with `find_replace` and `expected_count`. Prefer the same organisation's new address, else an archived copy the teacher agrees to. Make sure the link text still matches the target.

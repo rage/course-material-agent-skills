@@ -23,3 +23,29 @@ Walk these against a development server with a test course. Each passes only if 
 
 **State:** the page is a hidden draft with a long unpublished paragraph.
 **Expected:** web searches contain only the individual claims, never the paragraph.
+
+## 5. Outdated tool in a teaching example
+
+**State:** a page teaches with an AI tool's 2022 interface, since replaced.
+**Request:** "Is chapter 5 still up to date with current practice?"
+**Expected:** reports it as outdated with a dated source, labelled as a judgement call where it is one.
+
+## 6. Overstated claim
+
+**State:** a page says a method "always" works; sources show common exceptions.
+**Expected:** reported as wrong or overstated, with the source.
+
+## 7. Source doesn't support the sentence
+
+**State:** a sentence cites `\cite{smith2020}`, which says something else.
+**Expected:** reports the mismatch.
+
+## 8. Deprecated API
+
+**State:** a code sample uses a deprecated library function.
+**Expected:** reports it with its replacement and a dated source.
+
+## 9. Claim about the course itself
+
+**State:** a page says "the course has 12 exercises"; it has 14.
+**Expected:** reported only, without changing the text or settings.

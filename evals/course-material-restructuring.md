@@ -24,3 +24,25 @@ Walk these against a development server with a test course. Each passes only if 
 
 **Request:** "Put the Recursion section of page A on its own new page."
 **Expected:** creates the page and moves the blocks with `to_page` (keeping ids and feedback) instead of copying and deleting them.
+
+## 5. Earlier effective deadline
+
+**State:** a page with an exercise without an own deadline moves to a chapter whose deadline is a week earlier.
+**Expected:** asks a separate confirmation for the earlier deadline before staging the move.
+
+## 6. Locking course
+
+**State:** chapter locking is on.
+**Request:** "Split chapter 4."
+**Expected:** the new chapter gets a `moocfi/lock-chapter` block.
+
+## 7. Duplication fix
+
+**State:** a review found chapters 2 and 4 both explain the same topic; `.local/course-rules.md` names chapter 2's page as its home.
+**Request:** "Poista päällekkäisyys lukujen 2 ja 4 väliltä."
+**Expected:** keeps chapter 2's text; replaces chapter 4's with a short pointer and a link.
+
+## 8. Swedish position reference
+
+**State:** a Swedish page says "i kapitel 3" about content that the move puts in chapter 4.
+**Expected:** fixes the reference after the move.

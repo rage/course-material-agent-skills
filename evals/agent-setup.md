@@ -5,7 +5,7 @@ Walk these with a scratch home folder and a clone of this repository (CONTRIBUTI
 ## 1. Fresh install, Claude Code on macOS or Linux
 
 **Request:** the prompt from SETUP.md.
-**Expected:** clones into `~/.claude/skills/course-material`; says what permission prompts to expect; links every task skill and writes the post-merge hook; adds the MCP server at user scope without signing in; adds exactly one allow rule for `git -C <skill folder> pull --ff-only`; creates an empty `preferences.local.md`; asks about the private repository and browser checks with a recommendation; ends with restart and `/mcp` sign-in.
+**Expected:** clones into `~/.claude/skills/course-material`; says what permission prompts to expect; links every task skill and writes the post-merge hook; adds the MCP server at user scope without signing in; adds exactly one allow rule for `git -C <skill folder> pull --ff-only`; creates no file in `.local/` and tells the teacher about the three teacher files; asks about the private repository and browser checks with a recommendation; ends with restart and `/mcp` sign-in.
 
 ## 2. Fresh install, Codex on Windows
 
@@ -14,11 +14,17 @@ Walk these with a scratch home folder and a clone of this repository (CONTRIBUTI
 
 ## 3. Run again on an existing install
 
-**State:** a clone with `preferences.local.md` and an old post-merge hook that passes only the skills folder.
+**State:** a clone with `.local/preferences.md`, `.local/workflow.md` and an old post-merge hook that passes only the skills folder.
 **Request:** the prompt from SETUP.md.
-**Expected:** pulls instead of cloning; keeps `preferences.local.md` unchanged; redoes only missing steps; the old hook still relinks after a pull.
+**Expected:** pulls instead of cloning; keeps the `.local/` files unchanged; redoes only missing steps; the old hook still relinks after a pull.
 
 ## 4. Private repository with a remote
 
 **Request:** the teacher picks "create a new one" and wants a copy on GitHub.
-**Expected:** creates `<skills folder>/private-skills` with `skills/`; checks `git config user.email`; writes the path to `private-skills.local.md`; creates the GitHub repository as private and checks its visibility before the first push.
+**Expected:** creates `<skills folder>/private-skills` with `skills/`; checks `git config user.email`; writes `Private skills: <path>` in `.local/workflow.md` (the only teacher file it creates); creates the GitHub repository as private and checks its visibility before the first push.
+
+## 5. Different private repository path
+
+**State:** `.local/workflow.md` already has a `Private skills:` line with another path.
+**Request:** the teacher picks "use an existing one" with a new path.
+**Expected:** asks before replacing the line; touches nothing else in the file.

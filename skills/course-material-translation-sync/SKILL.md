@@ -1,37 +1,36 @@
 ---
 name: course-material-translation-sync
-description: Bring a language version of a courses.mooc.fi course in line with its source: find what changed in the source, update the matching parts, keep structure and terms aligned. Use when a teacher asks to update, sync or align a translation or language version. Not for proofreading (use course-material-language-review) or restructuring (use course-material-restructuring).
+description: "Bring a courses.mooc.fi language version in line with its source, check a translation against it, or report where versions differ."
 ---
 
-# Syncing a language version with its source
+# Syncing language versions
 
-Needs the `course-material` skill loaded too; write any text you add or change by its **Writing style** rule.
+1. Load the `course-material` skill and write by its **Writing style** rule.
+2. Read `course-material/references/course-facts.md` for language versions and dates.
 
-Language versions are separate courses with their own `language_code`; page, block and exercise ids differ, so match by position, structure and content.
+## Scope
 
-## Steps
+- Infer source, target and scope from the request and `language_versions`; ask only when ambiguous.
+- **Code samples** (comments, strings): a `workflow.md` line decides; else follow what the target already does; ask only when neither says.
+- Pair pages by `page_language_group_id` and exercises by `exercise_language_group_id`, by position where those are missing. Show the mapping when it isn't one-to-one.
 
-1. **Identify both courses** with `list_courses`. Confirm with the teacher which is the source, what to sync (everything, a chapter, a page) and when the last sync was.
-2. **Map the structure.** Read `get_course_structure` for both and pair modules, chapters and pages by order and meaning. List what has no partner. Show the mapping when it isn't one-to-one.
-3. **Find what changed.** `get_history` with a source page as `entity` gives `last_published_change.at` (when, not what). Compare each source page changed since the last sync with its partner block by block, outlines first; with no sync date, compare every pair.
-4. **Collect the terminology.** Read both glossaries and the target's wording for key terms. Reuse the target's terms; list new terms you had to choose.
-5. **Plan and confirm** page by page what you will add, change, move and remove in the target. Name every removal.
-6. **Apply** per page:
-   - new blocks: translate and `add` them at the matching position
-   - changed blocks: translate the changed text and `replace` the attribute
-   - moved blocks: `move` the target's existing block, so its id and feedback stay
-   - images: reuse the file URL unless the image has source-language text; then tell the teacher it needs a localised image
-   - links to the source course: point them at the target's matching page
-   - new pages and chapters: `patch_course_structure` with `blocks`. Translate titles; ask whether `url_path` keeps the source's or is translated.
-   - exercises: compare pairs with `get_exercise` and translate changed names and instructions with `patch_exercise` (`guide` topic `exercises`); list unpaired exercises and other exercise changes for the teacher.
-7. **Glossary**: add translated terms for new terms; references usually stay.
-8. **Re-check**: re-read the target outlines of the synced pages. Every source block has a partner in the same order, or is in your list for the teacher.
+## Compare
 
-**Done** when every changed source page is synced or listed; the teacher has the list of unpaired pages, exercises and images.
+- Compare the content of every pair each time; never infer what changed from history.
+- When both sides changed, show both and ask which wins.
+- Reuse the target glossary's terms; list new terms you had to choose.
+- Plan per page and confirm before editing.
 
-## Care
+## Apply
 
-- Translate meaning, not words, in the target's register. Keep code, LaTeX, citation keys and product names unchanged.
-- A target with no text yet follows the teacher's preferences for its language.
-- Don't overwrite target text the teacher has adapted: if a target block differs from a literal translation of an unchanged source block, leave it.
-- Never change the source course.
+- Translate meaning in the target's register. Keep code, LaTeX, citation keys and product names unchanged.
+- Move existing target blocks rather than recreating them.
+- Leave target text the teacher has adapted (it differs from a literal translation of an unchanged source block).
+- Links to the source course point to the target's matching page. Images with source-language text need a localised image: tell the teacher.
+- Create new pages with `pair_with` their source page; a source page that isn't published yet must be published first.
+- Exercise names and instructions with `patch_exercise`; list unpaired exercises and other exercise changes for the teacher.
+- Never write to the source course.
+
+## Drift report
+
+When asked to compare versions, report only: which side is ahead in text, numbers, dates, points, links, exercise and block counts, and settings.

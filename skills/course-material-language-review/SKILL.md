@@ -1,35 +1,37 @@
 ---
 name: course-material-language-review
-description: Review the language of courses.mooc.fi material: plain language (ISO 24495-1), spelling, grammar, consistent terms. Use when a teacher asks to proofread, simplify, check spelling or unify terms, in any language. Not for translating (use course-material-translation-sync), fact-checking (use course-material-claim-check) or alt texts and headings (use course-material-accessibility-review).
+description: "Proofread courses.mooc.fi material: spelling, grammar, consistent terms, glossary use and plain language. Not for translations (course-material-translation-sync)."
 ---
 
-# Language review of course material
+# Language review
 
-Needs the `course-material` skill loaded too; write any text you add or change by its **Writing style** rule.
+1. Load the `course-material` skill and write by its **Writing style** rule.
+2. Read `course-material/references/reviewing.md` and follow it for scope, findings and approval.
+3. Infer the readers from the course's audiences; ask only if it changes the outcome.
+4. Collect, check and report as below, in the course's language; never translate. Then fix what the teacher approves.
 
-Goal: text readers can find, understand and use. Review in the course's own language; don't translate.
+## Collect
 
-## Steps
+Text blocks raw, exercise names and instructions (`get_exercise`), and the text outside blocks (titles, glossary). Note the course's own conventions before judging: spelling variants, compound spelling, quotation marks, British or American English.
 
-1. **Agree on the scope and depth**: pages or chapters; spelling and grammar only, terminology, or a full plain-language edit. Ask who the readers are if it isn't obvious (`get_course_settings` lists audiences).
-2. **Read** the outline, then the text blocks you review in raw mode; exercise names and instructions with `get_exercise`. Note the course's own conventions (for example "e-mail" or "email", Finnish compound spelling, British or American English) and keep them rather than impose yours.
-3. **Review** against the checklist below. Note per block: path, quote, problem, suggested text.
-4. **Report** grouped by kind: errors (spelling, grammar, wrong terms) first, then clarity suggestions. For a rewritten passage, show before and after.
-5. **Edit what the teacher approves**: replace whole text attributes, keeping markup, links, `[latex]`, `\cite{}` and glossary terms intact; don't touch code samples or quoted material. Terminology across pages is a bulk edit (the `course-material` skill).
-6. **Re-check** each edited block (`read_back`, or `get_exercise` for exercises): only the text changed, and markup, links, LaTeX and citations are as before.
+## Check
 
-**Done** when every approved edit reads back correctly and the rest of the findings are in the report.
+- Follow the language's official norms (Finnish: Kielitoimisto; Swedish: Språkrådet; English: the course's variety) and the course's conventions over your own taste.
+- Mechanical issues across the course (double spaces, hyphens for dashes, straight quotes) with `find_replace` regexes; find doubled words by reading the text yourself.
+- **Glossary**: each term in `get_course_glossary_and_references` is used as defined, and the definition matches how the text uses it. Report inflected or variant uses; never rewrite text to force a match.
+- **Plain language** (ISO 24495-1), under the teacher's style:
+  - Relevant: each page's purpose is clear early; nothing essential missing, nothing there out of habit.
+  - Findable: headings say what follows; lists for steps and parallel items; tables for comparisons.
+  - Understandable: familiar words; terms explained on first use; one term per concept; short sentences; active voice; examples near abstractions; abbreviations explained.
+  - Usable: instructions as steps in the reader's order.
+- Every edit must trace to spelling, grammar, a convention, a preference or a checklist item. Changes to meaning, structure or voice are reported, not made.
 
-## Checklist (ISO 24495-1)
+## Report
 
-Use it within the **Writing style** rule: the teacher's style and preferences win over this list.
+- Findings by `course-material/references/reviewing.md`.
+- **Course style sheet**: the conventions the course follows consistently (spellings, quotation marks, terms, forms of address), offered as one offer to save to `preferences.md`. Save only the lines the teacher approves.
 
-- **Relevant**: each page's purpose is clear early, the most important thing first; nothing essential missing, nothing there out of habit.
-- **Findable**: headings say what follows and work as a table of contents; lists for steps and parallel items; tables for comparisons.
-- **Understandable**: familiar words; terms explained on first use (or in the glossary), one term per concept; short sentences, one idea each; active voice; concrete examples near abstractions; no unexplained abbreviations.
-- **Usable**: instructions are numbered steps in the reader's order; links say where they go.
-- **Correct**: spelling and grammar; names, terms, numbers, units and dates written consistently.
+## Fix
 
-## Care
-
-- Keep the teacher's voice, meaning and the course's level; when unsure what the teacher meant, ask.
+- Replace whole text attributes, keeping links, `[latex]`, `\cite{}` and glossary terms intact; never touch code or quotations. Show before and after for rewritten passages.
+- Unifying a term across pages is a bulk edit: propose the course's majority form and ask first.
