@@ -23,3 +23,18 @@ Walk these against a development server with a test course. Each passes only if 
 
 **State:** a link goes to a site's log-in form.
 **Expected:** doesn't submit anything and reports the link's status only.
+
+## 5. Soft 404, removed video, broken DOI
+
+**State:** a link returns 200 with a "page not found" text; a YouTube video is private; a reference DOI doesn't resolve.
+**Expected:** reports all three as broken; the video via oEmbed, the DOI via doi.org.
+
+## 6. Other courses and less obvious links
+
+**State:** a page links to another courses.mooc.fi course; a button's `url` attribute and a relative `/chapter-2/loops` link point to removed paths.
+**Expected:** asks whether the course link is intended; finds both the button and the relative link.
+
+## 7. Status from curl
+
+**State:** a fetch tool that summarises pages is available.
+**Expected:** statuses come from `curl`, not from the summarising tool.

@@ -4,10 +4,17 @@ Teachers can use these optional tools to check and maintain the course material 
 
 Example use cases:
 
+- **Review:** check a page, chapter or whole course in one go and get one list of suggestions.
+- **New course run:** prepare a copied course for its next run: dates, deadlines and last year's leftovers.
+- **Student reports:** check an error a student reported and fix it in every language version.
+- **Student's view:** find where students would get stuck, and whether chapters teach their learning objectives.
+- **Exercises:** check answer keys, unclear questions and peer review questions.
+- **Course design:** advice on structure, exercises and motivation, with sources.
 - **Fact-checking:** check claims against reliable sources and find outdated facts.
+- **Research:** find and weigh sources on a topic, with references and glossary terms to add.
 - **Links:** find broken or outdated links, images and files.
 - **Accessibility:** check alt texts, headings, link texts, tables and contrast.
-- **Language:** check spelling, grammar, consistent terms and plain language.
+- **Language:** check spelling, grammar, consistent terms and how easy the text is to understand.
 - **Restructuring:** split, merge, move or reorder chapters and pages, then check what the move affected.
 - **Language versions:** find where a language version differs from its source and keep the two in line.
 

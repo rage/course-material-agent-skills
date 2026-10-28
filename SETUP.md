@@ -14,10 +14,10 @@ With these skills, an AI agent on your computer can check and maintain your cour
 Start Claude Code or Codex and paste this:
 
 ```text
-Set up the course material skills from https://github.com/rage/course-material-agent-skills. Clone the repository into your user-level skills folder as course-material (Claude Code: .claude/skills/course-material in my home folder, Codex: .agents/skills/course-material in my home folder; use the full path); if that folder already exists, update it with git pull --ff-only instead. Then read AGENT-SETUP.md in it and follow it.
+Set up the course material skills from https://github.com/rage/course-material-agent-skills. Clone the repository into your user-level skills folder as course-material (Claude Code: .claude/skills/course-material in my home folder, or skills/course-material in $CLAUDE_CONFIG_DIR if it is set; Codex: .agents/skills/course-material in my home folder; use the full path); if that folder already exists, update it with git pull --ff-only instead. Then read AGENT-SETUP.md in it and follow it.
 ```
 
-The agent explains each step and asks you before it changes anything. It asks, for example, whether you want a private repository for your own skills and whether to install the tools for checking pages in a browser. At the end, you restart the agent and sign in to courses.mooc.fi in your browser.
+The agent explains each step and asks you before it changes anything. It asks, for example, whether you want a private repository for your own skills and whether to install the tools for checking pages in a browser. At the end, you reload the agent's skills, or restart the agent and sign in to courses.mooc.fi in your browser.
 
 [AGENT-SETUP.md](AGENT-SETUP.md) lists exactly what the agent does. To use a development server, add its address to the prompt.
 
@@ -37,20 +37,32 @@ You can remove the agent's access at any time on your account page on courses.mo
 Start your agent and ask for what you need. For example:
 
 - "List my courses on courses.mooc.fi."
-- "Check the links in my course."
-- "Check the facts in chapter 1."
-- "Check the language of the first chapter. Use plain language."
-- "Check the accessibility of the course front page."
+- "Check part 3: links, language and facts." ("Tarkista osa 3: linkit, kieli ja faktat.")
 - "Split chapter 4 into two chapters."
 - "Update the English version of the course to match the Finnish version."
+- "I copied last year's course. Prepare it for the autumn run."
+- "A student wrote that the example on page 2 has an error." (Paste the message.)
+- "Read chapter 3 as a beginner would. Where would students get stuck?"
+- "How should I structure the exercises in chapter 2?"
 
 The agent tells you what it changed.
 
-## Your writing preferences
+## What the agent remembers
 
-When you ask the agent to change how it writes, for example "use sentence case in headings", it may ask whether to remember that. If you say yes, it saves the rule in `preferences.local.md` in the skills folder and follows it from then on. You can also edit that file yourself; `preferences.example.md` next to it shows the format.
+The agent saves rules when you ask it to, when you say yes to its offer, and when you state a writing preference as a standing rule ("never use sinä in this course"): then it saves it straight away and tells you how to undo it. It keeps them in four files in the `.local` folder inside the skills folder:
 
-Your preferences apply to text the agent writes. Where a course already uses a term or style consistently, the agent keeps to the course and tells you about the difference.
+- `preferences.md`: how text is written, for example "Headings in sentence case."
+- `course-rules.md`: what content goes where and what the agent may edit, for example "Chapter 5 is frozen."
+- `workflow.md`: how the agent works, for example which checks a review includes.
+- `guidance.md`: how far the agent relies on its guidance on scientific rigor and teaching, for example "Statistics: I'm the expert here." When you clearly show how you feel about that guidance, by saying so or by declining the same kind of suggestion several times, the agent saves it here straight away and tells you. It can also point to your own guidance documents in your private skills repository.
+
+You can edit these files yourself. The files `preferences.example.md`, `course-rules.example.md`, `workflow.example.md` and `guidance.example.md` in the skills folder show the format. The agent never deletes them.
+
+The agent also keeps short notes about each course there, such as which courses are language versions of each other, and keeps them tidy.
+
+Some things are never remembered: the agent always asks you before it publishes, makes changes that could affect students, installs software or runs code.
+
+The `.local` folder stays on your computer. It is lost if you delete the skills folder or clone it again. If you use two agents, for example Claude Code and Codex, each has its own folder and its own memory.
 
 ## Your own skills
 
@@ -70,7 +82,7 @@ The agent can undo changes. Ask it, for example: "Undo the changes you made to p
 
 ## Updates
 
-The agent updates the skills itself when courses.mooc.fi tells it that a new version is available. You don't need to do anything. The updates come from this public repository, and the setup lets the agent fetch them without asking you each time. Updates never change your preferences.
+The agent updates the skills itself when courses.mooc.fi tells it that a new version is available. You don't need to do anything. The updates come from this public repository, and the setup lets the agent fetch them without asking you each time. Updates never change what the agent remembers.
 
 To update by hand, run this command:
 
@@ -81,18 +93,17 @@ git -C ~/.agents/skills/course-material pull --ff-only    # Codex
 
 ## Remove
 
-1. Remove the connection: `claude mcp remove courses-mooc-fi` or `codex mcp remove courses-mooc-fi`.
-2. To keep your preferences, move `preferences.local.md` out of the skills folder first, for example to your home folder.
-3. Delete the skills folder: `~/.claude/skills/course-material` (Claude Code) or `~/.agents/skills/course-material` (Codex). For Claude Code, also delete the links called `course-material-...` in `~/.claude/skills`.
-4. Remove the agent's access on your account page on courses.mooc.fi.
+1. Remove the connection: `claude mcp remove courses-moocfi` or `codex mcp remove courses-moocfi`.
+2. To keep what the agent remembers, copy the `.local` folder out first. Delete the skills folder: `~/.claude/skills/course-material` (Claude Code) or `~/.agents/skills/course-material` (Codex). For Claude Code, also delete the links called `course-material-...` and the links to your private skills in `~/.claude/skills`, and the `git -C ... pull --ff-only` entries in `permissions.allow` of `~/.claude/settings.json`. For Codex, delete `~/.codex/rules/course-material-agent-skills.rules`. The private skills repository and the playwright-cli skill are yours to keep or delete.
+3. Remove the agent's access on your account page on courses.mooc.fi.
 
 ## Problems
 
-- **The agent says it can't find the courses.mooc.fi tools.** Start a new session. In Claude Code, type `/mcp` and sign in to `courses-mooc-fi`. In Codex, run `codex mcp login courses-mooc-fi`.
+- **The agent says it can't find the courses.mooc.fi tools.** Start a new session. In Claude Code, type `/mcp` and sign in to `courses-moocfi`. In Codex, run `codex mcp login courses-moocfi`.
 - **Codex says the protocol version isn't supported.** Run `codex features enable mcp_2026_07_28` and start a new session.
-- **The agent can't update the skills.** You may have changed files in the skills folder. Ask the agent to show what changed, and move your changes away; your `preferences.local.md` can stay.
+- **The agent can't update the skills.** You may have changed files in the skills folder. Ask the agent to show what changed, and move your changes away; the `.local` folder can stay.
 - **Something else in the setup is missing.** Paste the setup prompt again. The agent updates what's there and redoes only the missing steps.
 
 ## Installed with the old setup script?
 
-Nothing changes for you: your installation keeps updating. The setup scripts are gone, so for a repair, paste the setup prompt above.
+Nothing changes for you: your installation keeps updating. For a repair, paste the setup prompt above.

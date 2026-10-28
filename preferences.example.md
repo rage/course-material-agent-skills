@@ -1,10 +1,9 @@
 # Writing preferences
 
 - Headings in sentence case.
-- Use Finnish quotation marks ” ” and a non-breaking space before units.
-- Write "tehtävä", not "harjoitus", for exercises.
+- Finnish quotation marks ” ” and a non-breaking space before units.
 - In English text: British spelling.
 
-## Course: example-course-slug
+## Course: example-course-2026, example-course-2026-en
 
-- Address students with "sinä".
+- In Finnish text: address students with "sinä".
