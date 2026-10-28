@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
-# Links each task skill in skills/ into a skills folder, for clients that only
-# discover skills one level deep (Claude Code). Removes links to deleted
-# task skills. Runs from the git post-merge hook.
+# Links each skill in a repository's skills/ into a skills folder, for clients that only
+# discover skills one level deep (Claude Code). Removes links to deleted skills. Runs from
+# the git post-merge hook. Leaves links into other repositories alone, so this repository
+# and a teacher's private skills repository can't take each other's links.
 #
-# Usage: link-task-skills.sh <skills folder>
+# Usage: link-task-skills.sh <skills folder> [<repository>]
+#   <repository> defaults to the one holding this script; old hooks pass only the folder.
 set -euo pipefail
 
-skills_root="${1:?usage: link-task-skills.sh <skills folder>}"
-repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
+skills_root="${1:?usage: link-task-skills.sh <skills folder> [<repository>]}"
+repo_dir="$(cd "${2:-$(dirname "${BASH_SOURCE[0]}")/..}" && pwd -P)"
 
 mkdir -p "$skills_root"
 
@@ -16,8 +18,15 @@ for task_skill in "$repo_dir"/skills/*/; do
   task_skill="${task_skill%/}"
   link="$skills_root/$(basename "$task_skill")"
   if [ -L "$link" ]; then
-    [ "$(readlink "$link")" = "$task_skill" ] && continue
-    rm "$link"
+    target="$(readlink "$link")"
+    [ "$target" = "$task_skill" ] && continue
+    case "$target" in
+      "$repo_dir"/skills/*) rm "$link" ;;
+      *)
+        echo "Skipping $link: it links to $target, another repository." >&2
+        continue
+        ;;
+    esac
   elif [ -e "$link" ]; then
     echo "Skipping $link: it exists and isn't a link made by this setup." >&2
     continue

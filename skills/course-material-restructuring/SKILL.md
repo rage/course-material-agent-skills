@@ -1,39 +1,29 @@
 ---
 name: course-material-restructuring
-description: Restructure a courses.mooc.fi course - split or merge chapters, move pages and content between chapters and pages, reorder modules - and check redirects, links and exercises afterwards. Use when a teacher asks to reorganise, split, merge, move or reorder chapters, pages or sections of a courses.mooc.fi course.
+description: Restructure a courses.mooc.fi course: split, merge, move or reorder chapters, pages, sections and modules, then check links, exercises and dates. Use when a teacher asks to reorganise, split, merge, move or reorder. Not for fixing links alone (use course-material-link-check) or language versions (use course-material-translation-sync).
 ---
 
 # Restructuring a course
 
-This skill works with the `course-material` skill. Load that one too: it has the workflow, the tool rules and the `skill_version` to send on every call. The ops are in its `references/course-structure.md` and `references/page-content.md`.
+Needs the `course-material` skill loaded too; write any text you add or change by its **Writing style** rule. Ops and paths: the `patch_course_structure` and `patch_page_content` tool descriptions and `guide` topics `course-structure` and `editing`.
 
 ## Steps
 
-1. **Read the current structure** with `get_course_structure` and note: which pages are hidden, which chapters are open, deadlines, and which pages have exercises and submissions (`exercise_count`, `has_submissions`). Check `get_course_settings` for whether the course is a draft, in test mode or live.
-2. **Write the plan** as a before/after outline (modules, chapters, pages in order) and list the consequences:
-   - pages whose paths change (they get redirects automatically)
-   - chapter renumbering
-   - exercises that move (they keep their submissions)
-   - removals, and whether they are risky (visible pages or chapters in a live course, anything with submissions)
-   - chapter dates that would effectively change for students
-   Agree the plan with the teacher before writing anything.
-3. **Dry-run** the structure change: `patch_course_structure` with `dry_run: true` and all ops of one logical step in one call. Read the diff, the redirects and renumbering in the result.
-4. **Apply** step by step, one call per logical step (for example "split chapter 3", then "move the recursion pages into it"). Useful patterns:
-   - split a chapter: `add` a chapter after it with a label, then `move` a range of pages into `/$label/pages`
-   - merge: `move` the pages into the other chapter, then `remove` the empty chapter
-   - move content between pages: `patch_page_content` `move` with `to_page`, which keeps block ids and feedback
-   - make a page a chapter's front page: `move` it to the start of the chapter's `pages`
-5. **Check afterwards**:
-   - links: the result lists internal links that point at old paths. They still work through redirects; update them to the new paths (see the `course-material-link-check` skill)
-   - text that refers to positions ("in chapter 3", "on the previous page", "see part 2") now may be wrong; search for chapter and part references with `find_replace` without `replace` and fix them
-   - chapter front pages: their content often lists the chapter's pages or topics; update it
-   - the structure again with `get_course_structure`, and the changed pages with the main skill's visual check
-6. **Summarise** the changeset as the main skill describes, including the redirects created and any risky items for the review page.
+1. **Read the current state**: `get_course_structure` for hidden pages, chapter dates, and each page's `exercise_count` and `has_submissions`; `list_courses` for whether the course is a draft or in test mode. Keep these notes for step 5.
+2. **Write the plan** as a before/after outline (modules, chapters, pages in order) with its consequences: changed paths, chapter renumbering, exercises that move, removals and which of them are risky (`guide` topic `publishing-and-risk`), and dates that change for students. A new chapter has no opening time or deadline: when exercise pages move into one, ask the teacher which dates it gets. A new module starts with manual completion and certificates off; tell the teacher (`patch_course_settings` changes them). Agree the plan before writing anything.
+3. **Apply one logical step per call** (for example "split chapter 3": add the chapter and move its pages in one call), dry-running each first and reading its diff, redirects and renumbering.
+   - Split: add the chapter and move the pages into it in one call; fill its front page.
+   - Merge: move the pages, then remove the empty chapter.
+   - Content between pages: `patch_page_content` `move` with `to_page`.
+4. **Fix what the move broke**:
+   - internal links the results list as pointing at old paths (the `course-material` skill)
+   - text that refers to positions ("in chapter 3", "luvussa 3", "on the previous page"): search with `find_replace` without `replace` and fix
+   - chapter front pages that list the chapter's pages or topics
+5. **Re-check**: `get_course_structure` matches the plan, and every moved page has the `exercise_count` and `has_submissions` noted in step 1.
+6. If the course has other language versions, tell the teacher they need the same change (`course-material-translation-sync`).
+
+**Done** when the structure equals the plan; no exercise lost its page or dates without agreement; links and position references are fixed or listed.
 
 ## Care
 
-- Prefer `move` over remove-and-recreate: it keeps ids, exercises, submissions and feedback.
-- A page with exercises can't become a top-level page.
-- Removing visible pages or chapters in a live course, or anything with submissions, is risky and only the teacher can publish it. Hidden pages are safer to remove.
-- Don't change chapter opening times or deadlines as a side effect. If the restructuring needs new dates, agree them with the teacher; moving a deadline earlier on an open chapter is risky.
-- Keep each call to one logical step so history and reverts stay understandable.
+- Prefer `move` to remove-and-recreate (keeps ids, exercises, submissions, feedback); don't change chapter dates as a side effect.

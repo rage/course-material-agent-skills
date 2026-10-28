@@ -1,40 +1,35 @@
 ---
 name: course-material-accessibility-review
-description: Review and fix accessibility of courses.mooc.fi course material - image alt texts, heading order, link texts, tables, colour-only meaning, plus an automated axe check of the rendered page. Use when a teacher asks for an accessibility (a11y, WCAG, saavutettavuus) review or fixes on a courses.mooc.fi course, chapter or page.
+description: Review and fix accessibility of courses.mooc.fi material: alt texts, headings, link texts, tables, contrast, plus an axe check. Use for an accessibility (a11y, WCAG, saavutettavuus) review or fixes. Not for spelling or plain language (use course-material-language-review) or broken links (use course-material-link-check).
 ---
 
 # Accessibility review of course material
 
-This skill works with the `course-material` skill. Load that one too: it has the workflow, the tool rules and the `skill_version` to send on every call.
-
-Aim for WCAG 2.2 level AA, the level EU public-sector accessibility rules require.
+Needs the `course-material` skill loaded too; write any text you add or change by its **Writing style** rule. Aim for WCAG 2.2 level AA.
 
 ## Steps
 
-1. **Agree on the scope**: pages or chapters, report only or also fixes.
-2. **Check the content** (raw page reads):
-   - **Images** (`core/image`, image children of other blocks): every informative image has an `alt` that says what the image shows or means in context, without "image of". Decorative images have `alt: ""`. Complex images (charts, diagrams) have the essentials in alt text or in the text or caption next to them. Text in images is also in the text.
-   - **Headings**: one logical outline per page; no skipped levels (h2 to h4); headings aren't used only for looks; bold paragraphs that act as headings become `core/heading`.
-   - **Link texts** say where the link goes without the surrounding text: no "click here", "here", "read more" or bare URLs. Links that open a new tab are rare and expected.
-   - **Lists** are real `core/list` blocks, not paragraphs starting with "-".
-   - **Tables** have a header row (`head` cells with `tag: "th"`, `scope: "col"`), aren't used for layout, and have a caption when the context doesn't explain them.
-   - **Colour**: meaning isn't carried by colour alone (inline colour, coloured boxes); text colours have enough contrast.
+1. **Scope**: pages or chapters; report only, or fix too.
+2. **Check the content** (raw reads of the blocks in question; `get_exercise` for exercise instructions):
+   - **Images**: every informative image has an `alt` that says what it shows or means in context, without "image of". Decorative images have `alt: ""`. Charts and diagrams have the essentials in alt text or in the text or caption next to them. Text in an image is also in the alt or the text.
+   - **Headings**: one logical outline per page, no skipped levels (h2 to h4), not used only for looks. Bold paragraphs acting as headings become `core/heading`.
+   - **Link texts** say where the link goes without the surrounding text: no "click here", "read more" or bare URLs.
+   - **Lists** are `core/list` blocks, not paragraphs starting with "-".
+   - **Tables** have a header row, and a header column when rows are labelled; aren't used for layout; have a caption when the context doesn't explain them. Cell shapes: `guide` for `core/table`.
+   - **Colour**: meaning isn't carried by colour alone. Text contrast is at least 4.5:1, or 3:1 for large text (24 px, or 18.5 px bold) and for icons and lines that carry meaning.
    - **Language**: passages in another language than the page are marked if the editor allows it; otherwise report them.
-   - **Media**: videos and audio have captions or transcripts; embedded content (iframes) has a title.
-   - **Math**: formulas have a text explanation nearby when they carry the main point.
-3. **Check the rendered page** for each page in scope: get a link with `get_preview_link`, then with `playwright-cli`:
+   - **Media**: videos and audio have captions or transcripts; iframes have a title.
+   - **Math**: a formula that carries the main point has a text explanation nearby.
+3. **Run axe** on each page in scope, on a `get_preview_link` URL:
    ```bash
    playwright-cli open "<preview URL>"
-   playwright-cli eval "await new Promise((resolve, reject) => { const s = document.createElement('script'); s.src = 'https://cdn.jsdelivr.net/npm/axe-core@4/axe.min.js'; s.onload = resolve; s.onerror = reject; document.head.appendChild(s) })"
+   playwright-cli eval "await new Promise((resolve, reject) => { const s = document.createElement('script'); s.src = 'https://cdn.jsdelivr.net/npm/axe-core@4.14.0/axe.min.js'; s.onload = resolve; s.onerror = reject; document.head.appendChild(s) })"
    playwright-cli --raw eval "JSON.stringify((await axe.run()).violations.map(v => ({id: v.id, impact: v.impact, help: v.help, nodes: v.nodes.map(n => n.target.join(' ')).slice(0, 5)})))"
    playwright-cli close
    ```
-   If the page blocks the script (content security policy), say so and rely on the content checks. If `playwright-cli` isn't available, skip this step and say so. Ignore violations in the platform's own navigation and chrome; report them separately as platform issues, since the teacher can't fix them.
-4. **Report** findings by severity: blockers (missing alt on informative images, no headings, unreadable tables), then improvements. For each: page, block path, problem, suggested fix.
-5. **Fix what the teacher approves**: set `alt` attributes, change heading levels (`/h2/attributes/level`), turn bold paragraphs into headings (`replace` on `name`), rewrite link texts, set table header cells. Writing alt text needs the image's meaning in context; when you can't see or understand the image, ask the teacher rather than guess.
-6. Summarise the changeset as the main skill describes and run the main skill's visual check on changed pages.
+   If the script is blocked (content security policy) or `playwright-cli` is missing, say so and rely on step 2. axe finds only part of the problems; a clean run never replaces step 2. Report violations in the site header and footer separately as platform issues: the teacher can't fix them.
+4. **Report** by severity: blockers (missing alt on informative images, no headings, unreadable tables), then improvements. Each with page, block path, problem, suggested fix.
+5. **Fix what the teacher approves** with what the editor offers; ARIA attributes and raw HTML are rejected. Replace a bold paragraph acting as a heading with a `core/heading` holding its text without `<strong>`; `structural_replace` `retype_to` keeps the markup. Writing alt text needs the image's meaning in context: if you can't see or understand the image, ask the teacher. Exercise edits: `guide` topic `exercises`.
+6. **Re-check** each changed page: re-read the changed blocks and run step 3 again.
 
-## Care
-
-- Edit exercise names and task and review instructions with `patch_exercise` (see [exercises.md](../../references/exercises.md)). Everything else in an exercise can't be edited by agents; report problems there for the teacher.
-- Don't add ARIA attributes or HTML the editor can't produce; the server rejects them.
+**Done** when every finding is fixed, declined or reported, and axe shows no new violations in the course content.
