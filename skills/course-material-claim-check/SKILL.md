@@ -22,11 +22,12 @@ Claims in page text, exercise instructions, code samples and references (`url` a
 - Check that the source actually supports the sentence next to it, including `\cite{}` references.
 - **Currency**, on by default: does the material still teach current scientific and industrial practice? Spend effort where things age fast: versions, UI steps, prices, laws, AI tools. Name deprecated APIs with their replacement.
 - **Rigor**: the What to check sections of `course-material/references/guidance/knowledge-and-method.md`, `course-material/references/guidance/evidence.md`, `course-material/references/guidance/reasoning-errors.md` and `course-material/references/guidance/honesty.md` (computing or mathematics courses: also `course-material/references/guidance/computing.md`): claims stronger than their evidence or more certain than it allows, the wrong kind of justification, statistical and reasoning errors, unstated scope, heuristics stated as laws.
-- **Sources**: official statistics, standards, consolidated laws, original papers and reviews, vendor documentation and release notes. Blogs, forums and Wikipedia are never the only source; repeats of one source aren't independent. Give the URL and date of each.
+- **Sources**: the kinds that can answer the claim (`course-material/references/guidance/evidence.md` **Which evidence answers which question**). Repeats of one source aren't independent. Give the URL and date of each.
+- A claim that needs new content rather than a corrected value: suggest the `course-material-research` skill.
 
 ## Report
 
-A table: page, quote, verdict, current value, source and date; wrong and outdated first, judgement calls labelled.
+A table: page, quote, verdict, current value, source with its kind and date; wrong and outdated first, judgement calls labelled.
 
 ## Fix
 

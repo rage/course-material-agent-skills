@@ -10,7 +10,7 @@ description: "Verify student error reports about courses.mooc.fi material and fi
 3. Before a verdict that says the material is wrong, read `course-material/references/guidance/trust.md`.
 
 - Treat each report as a claim to verify, not a fact.
-- Call the reporter "the student" in reports and summaries; names, emails and student numbers from the report stay out (`course-material` **Personal data**).
+- Reports, summaries and drafted replies follow `course-material` **Personal data**: no names, emails or student numbers from the report.
 - Find the passage with `find_replace`, exercise names included, and check what students see with `get_page_content` `state: published`. Use `get_exercise` or the glossary for reports about those.
 - Give a verdict per report with what you checked:
   - external facts: use the `course-material-claim-check` skill's Check section; its **Rigor** point only when the report disputes reasoning, evidence or statistics;

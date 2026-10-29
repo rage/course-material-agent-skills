@@ -1,6 +1,6 @@
 # Engagement and motivation
 
-How to tell interest from learning, and how material can keep students going without lowering standards. Read it when reviewing motivating content or course pacing, or when the teacher asks how to keep students engaged.
+How to tell interest from learning, and how material can keep students going without lowering standards. Read it when writing new teaching material, when reviewing motivating content or course pacing, or when the teacher asks how to keep students engaged.
 
 ## What to check
 

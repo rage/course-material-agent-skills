@@ -1,6 +1,6 @@
 # Computing and mathematics
 
-What to notice in computer science, software engineering, programming and mathematics material. Read it when the course teaches one of these.
+What to notice in computer science, software engineering, programming and mathematics material. Read it when the course teaches one of these, including before writing new material for it.
 
 ## What to check
 

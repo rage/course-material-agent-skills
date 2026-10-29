@@ -17,6 +17,10 @@ A row passes when the expected task skill is among those loaded (with `course-ma
 | Onko luvun 3 videot vielä katsottavissa? | link-check |
 | Is chapter 5 still up to date with current practice? | claim-check |
 | Onko tämä materiaali ajan tasalla? | claim-check |
+| Etsi tutkimusta hajautetun harjoittelun hyödyistä luvun 3 sivua varten | research |
+| What do practitioners say about React Server Components for our web course? | research |
+| I need sources for a new page on code review | research |
+| Kirjoita uusi sivu testivetoisesta kehityksestä lähteineen | research |
 | Oikolue johdanto | language-review |
 | Korrekturläs sidan | language-review |
 | Check alt texts and headings | accessibility-review |
@@ -39,6 +43,7 @@ A row passes when the expected task skill is among those loaded (with `course-ma
 | Skip the pedagogy suggestions from now on | course-material |
 | Suggest improvements to chapter 3 | review |
 | Miten motivoisin opiskelijoita paremmin? | design-advice |
+| Mitä tutkimus sanoo palautteen ajoituksesta? | design-advice |
 | Scores went up after the redesign. Did it work? | design-advice |
 | Change chapter 3's deadline to 15 November | course-material |
 | Korjaa kirjoitusvirhe toisessa kappaleessa | course-material |

@@ -1,6 +1,6 @@
 # Learning
 
-What learning science says about how students learn from course material. Read it when judging whether pages and exercises support learning, or when the teacher asks why a teaching choice works.
+What learning science says about how students learn from course material. Read it when writing new teaching material, when judging whether pages and exercises support learning, or when the teacher asks why a teaching choice works.
 
 ## What to check
 

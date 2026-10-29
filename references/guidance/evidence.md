@@ -1,6 +1,6 @@
 # Evidence and expertise
 
-How strongly evidence supports a claim and how much weight experts and consensus deserve. Read it when checking a claim's sources, a "studies show" passage, or text that teaches students to evaluate research.
+How strongly evidence supports a claim and how much weight experts and consensus deserve. Read it when researching a topic, or checking a claim's sources, a "studies show" passage, or text that teaches students to evaluate research.
 
 ## What to check
 
@@ -9,6 +9,7 @@ How strongly evidence supports a claim and how much weight experts and consensus
 - **Counting studies** ("twelve studies found…") instead of weighing their quality, relevance and independence. Suggest citing the best evidence rather than the count. [Cochrane-Handbook]
 - **Double counting**: several reviews cited as independent confirmation when they share the same primary studies. Suggest citing one. [Cochrane-Handbook] [Aromataris-2015]
 - **Wrong tool for the job**: PRISMA compliance cited as proof a review is sound, AMSTAR 2 applied outside healthcare without saying it was adapted, or a GRADE recommendation read as certainty of the evidence. Suggest the accurate claim. [PRISMA-2020] [AMSTAR2-2017] [GRADE-2008]
+- **Source weighed by its kind, not by the question**: a forum or issue tracker dismissed on how a library behaves in use, or cited for a learning or health outcome; a vendor's benchmark cited as a comparison. Suggest the kind of source that answers the question (Background, **Which evidence answers which question**). [Garousi-2019]
 - **Mechanism offered as proof of outcome**: a plausible mechanism, or an improved intermediate measure, presented as showing the intervention works. Suggest "may work through…" until outcome evidence is cited. [Fleming-1996]
 - **Peer review as a guarantee**: "peer-reviewed, therefore correct". Suggest "published in a peer-reviewed journal" without implying it is correct. [Jefferson-2007]
 - **Expert outside their field**: a quoted authority speaking on a domain where they have no expertise. Suggest a source from that field. [Ballantyne-2019] [Goldman-2001]
@@ -44,6 +45,24 @@ Editorial peer review has limited evidence of improving the quality of what it p
 
 Improvements in surrogate outcomes (such as a lab value) have repeatedly failed to predict the outcomes that matter. [Fleming-1996]
 
+### Which evidence answers which question
+
+Don't rule a source out by its kind; leave out only the clearly untrustworthy (fabricated, content farms, undisclosed sales pitches). Each source type in the table above falls under one kind below; weigh each kind for the question at hand. (editorial)
+
+| Kind | What it is | Answers well | Answers poorly |
+|---|---|---|---|
+| synthesis | Systematic review, meta-analysis, umbrella review | Whether something works, on average, in the settings studied | What its studies didn't test [Cochrane-Handbook] |
+| consensus | Expert consensus statement, evidence-based guideline, standard | What the field agrees on or recommends | Questions outside its scope [Miller-2013] [GRADE-2008] |
+| primary | One study, including a preprint not yet peer reviewed | What happened in that setting | General rules [NASEM-2019] |
+| official | Official statistics, laws, vendor documentation and release notes | What a figure, law or product currently is | Whether a product is good, or better than another (editorial) |
+| proof | Mathematical or formal result | What follows from its assumptions | Whether the assumptions hold in practice (editorial) |
+| reference | Narrative review, textbook, encyclopedia, Wikipedia | Established background, pointers to sources | Current or disputed questions (editorial) |
+| expert | A recognised authority in the field, within their field, cited to a specific work | Judgement, trade-offs, the field's conventions | Outcomes; anything outside their field [Goldman-2001] [Ballantyne-2019] |
+| practitioner | Forums, Q&A sites, issue trackers, blogs, talks, practitioner surveys | The state of practice: how a tool behaves in use, bugs and workarounds, adoption, what practitioners prefer and why [Garousi-2019] | Measured effects such as performance or defect rates; learning or health outcomes (editorial) |
+| editorial | Your own synthesis or judgement | Connecting sources | Anything stated as a finding (editorial) |
+
+Practitioner evidence is often experience and opinion; the practitioner sources that can be found may be an unrepresentative sample, and comment or vote counts can be inflated. [Garousi-2019]
+
 ### Expertise and consensus
 
 - Expertise is domain-specific; experts judging questions outside their field should be less confident, and so should those who rely on them there. [Ballantyne-2019]
@@ -64,6 +83,7 @@ Improvements in surrogate outcomes (such as a lab value) have repeatedly failed 
 - [GRADE-2008] Guyatt, G. H., et al. (2008). *GRADE: an emerging consensus on rating quality of evidence and strength of recommendations*. BMJ. Methodology article. https://doi.org/10.1136/bmj.39489.470347.AD. Checked 2026-10-29.
 - [PRISMA-2020] Page, M. J., et al. (2021). *The PRISMA 2020 statement: an updated guideline for reporting systematic reviews*. BMJ. Reporting guideline. https://doi.org/10.1136/bmj.n71. Checked 2026-10-29.
 - [AMSTAR2-2017] Shea, B. J., et al. (2017). *AMSTAR 2: a critical appraisal tool for systematic reviews that include randomised or non-randomised studies of healthcare interventions, or both*. BMJ. Appraisal instrument. https://doi.org/10.1136/bmj.j4008. Checked 2026-10-29.
+- [Garousi-2019] Garousi, V., Felderer, M., & Mäntylä, M. V. (2019). *Guidelines for including grey literature and conducting multivocal literature reviews in software engineering*. Information and Software Technology. Methodology article. https://doi.org/10.1016/j.infsof.2018.09.006. Checked 2026-10-30.
 - [Aromataris-2015] Aromataris, E., et al. (2015). *Summarizing systematic reviews: methodological development, conduct and reporting of an umbrella review approach*. International Journal of Evidence-Based Healthcare. Methodology article. https://doi.org/10.1097/XEB.0000000000000055. Checked 2026-10-29.
 - [Ioannidis-2016] Ioannidis, J. P. A. (2016). *The Mass Production of Redundant, Misleading, and Conflicted Systematic Reviews and Meta-analyses*. The Milbank Quarterly. Analysis. https://doi.org/10.1111/1468-0009.12210. Checked 2026-10-29.
 - [Fleming-1996] Fleming, T. R., & DeMets, D. L. (1996). *Surrogate End Points in Clinical Trials: Are We Being Misled?* Annals of Internal Medicine. Review. https://doi.org/10.7326/0003-4819-125-7-199610010-00011. Checked 2026-10-29.

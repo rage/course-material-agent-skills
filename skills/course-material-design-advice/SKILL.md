@@ -14,7 +14,7 @@ description: "Advise on course design and teaching for courses.mooc.fi courses: 
    - motivation and engagement: `course-material/references/guidance/engagement.md`;
    - planning, evaluating or improving a course or a run: `course-material/references/guidance/course-production.md`;
    - computing, programming and mathematics courses: also `course-material/references/guidance/computing.md`.
-4. **A question**: answer briefly with the reasoning and source keys. When it is about the teacher's course, read the outline and the pages it concerns first, and tie the answer to them.
+4. **A question**: answer briefly with the reasoning and source keys; when the guidance files don't answer it, use the `course-material-research` skill. When it is about the teacher's course, read the outline and the pages it concerns first, and tie the answer to them.
 5. **A review of a part**: read `course-material/references/reviewing.md` and follow it for scope, findings and approval. Report from the files' What to check sections.
 6. Report and draft only. For approved changes, use the `course-material` skill for text, the `course-material-restructuring` skill for structure, and say what to change in the exercise editor for exercises.
 

@@ -11,6 +11,7 @@ Example use cases:
 - **Exercises:** check answer keys, unclear questions and peer review questions.
 - **Course design:** advice on structure, exercises and motivation, with sources.
 - **Fact-checking:** check claims against reliable sources and find outdated facts.
+- **Research:** find and weigh sources on a topic, with references and glossary terms to add.
 - **Links:** find broken or outdated links, images and files.
 - **Accessibility:** check alt texts, headings, link texts, tables and contrast.
 - **Language:** check spelling, grammar, consistent terms and how easy the text is to understand.

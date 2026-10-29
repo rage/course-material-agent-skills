@@ -11,7 +11,7 @@
 | `VERSION` | The skill version (semver). Agents send it as `skill_version` on every tool call. |
 | `references/` | Reference files the main skill and task skills name. Links stay one level deep: reference files don't markdown-link each other; naming one by its full `course-material/references/...` path is fine. |
 | `references/guidance/` | Guidance on rigor, teaching and course design, and `trust.md` on how far to rely on it. Each file: a purpose line, What to check, Background, Sources. Every What to check point ends with a source key from its Sources list, or `(editorial)`; table rows may share the key after the table. Sources are checked online and dated. One key and one URL per source across files. CI checks the keys. |
-| `references/writing/` | `styles.md`: whose style comes first, what holds in every style, and the writing styles with when each fits. `finnish.md`, `swedish.md`, `english.md`: each language's norms and references. Language files: a lead line, What it is, When it fits, Applies here, How agents use it, Sources. |
+| `references/writing/` | `styles.md`: whose style comes first, what holds in every style, and the writing styles with when each fits. `new-material.md`: how to draft a new teaching page. `finnish.md`, `swedish.md`, `english.md`: each language's norms and references. Language files: a lead line, What it is, When it fits, Applies here, How agents use it, Sources. |
 | `references/accessibility.md` | WCAG criteria for course content and what the law requires. Like the language files: a lead line, What it is, When it fits (Fits and Doesn't fit), Applies here, sections of its own where needed, How agents use it, Sources. It names parts and rates their relevance; agents know the standards, so never restate rules. Sources are checked online and dated; a paywalled or unreadable text says so instead. |
 | `evals/<skill name>.md` | Test scenarios per skill; `evals/routing.md` tests which skill a request loads. Not loaded by agents. |
 | `skills/<name>/SKILL.md` | Task skills. The folder name is the skill `name` and starts with `course-material-`. |
@@ -55,10 +55,12 @@ The MCP server's instructions, tool descriptions, `guide` topics and error messa
 |---|---|---|
 | Tool workflow, draft-vs-published reads, pitfalls the server doesn't state | `SKILL.md` | all |
 | Asking, report first, safety rules, writing style, end summary | `SKILL.md` | all |
-| Findings format, course-wide method, fresh-context brief | `references/reviewing.md` | check skills, review, student-feedback, walkthrough, exercise-check, design-advice, `SKILL.md` (subagents), `references/guidance/trust.md` |
+| Findings format, course-wide method, fresh-context brief | `references/reviewing.md` | check skills, review, student-feedback, walkthrough, exercise-check, design-advice, research, `SKILL.md` (subagents), `references/guidance/trust.md` |
 | Remembering, `.local/` | `SKILL.md` (short), `references/local.md` | all |
 | Tool and agent gotchas → drafted public issue | `references/skill-placement.md` | `SKILL.md`, `AGENT-SETUP.md` |
 | Rich-text markup in block attributes | `references/rich-text.md` | `SKILL.md` |
+| Writing new teaching material | `references/writing/new-material.md` | `SKILL.md` |
+| Common AI style mistakes | `references/writing/styles.md` | `references/writing/new-material.md`, language-review |
 | Previews, screenshots, axe runs | `references/visual-checks.md` | `SKILL.md`, accessibility-review, link-check |
 | Updating the skills | `references/updating.md` | `SKILL.md`, `AGENT-SETUP.md` |
 | Setup and connection errors | `references/setup-errors.md` | `SKILL.md` |
@@ -69,20 +71,21 @@ The MCP server's instructions, tool descriptions, `guide` topics and error messa
 | Effective deadline of moved exercises, lock-chapter on new chapters | `course-material-restructuring` | — |
 | Links | `course-material-link-check` | review |
 | Claims, sources, currency, deprecated APIs | `course-material-claim-check` | review, student-feedback |
+| Research method, proposing references and glossary terms | `course-material-research` | `references/writing/new-material.md`, claim-check, design-advice |
 | Language and glossary use, course style sheet | `course-material-language-review` | review, student-feedback |
 | How far to rely on guidance, raising it with the teacher, saving trust settings without asking | `references/guidance/trust.md` | every skill using guidance, `SKILL.md` (disagreement) |
-| Kinds of claims and their justification, models, pseudoscience | `references/guidance/knowledge-and-method.md` | claim-check; review and student-feedback via claim-check |
-| Evidence types, expertise, consensus | `references/guidance/evidence.md` | claim-check; review and student-feedback via claim-check |
-| Fallacies, statistics and method errors, biases | `references/guidance/reasoning-errors.md` | claim-check; review and student-feedback via claim-check |
-| Uncertainty, scope, interests, corrections | `references/guidance/honesty.md` | claim-check, language-review, `SKILL.md` (writing style), `references/writing/styles.md`; review and student-feedback via claim-check |
-| How students learn, feedback, UDL, generic skills | `references/guidance/learning.md` | design-advice, exercise-check, walkthrough, review |
-| Objectives and their level, prerequisites, progression, simplification, core content, workload | `references/guidance/course-design.md` | design-advice, walkthrough, restructuring, review |
-| What exercises can show, fairness, criteria, AI use | `references/guidance/exercises.md` | design-advice, exercise-check, walkthrough, review, `references/writing/styles.md` |
-| Motivation and engagement, pacing | `references/guidance/engagement.md` | design-advice, review |
-| Computing, software engineering, programming teaching, mathematics | `references/guidance/computing.md` | claim-check, design-advice, exercise-check, walkthrough, review |
-| Planning and evaluating a course | `references/guidance/course-production.md` | design-advice (new-run hands over) |
+| Kinds of claims and their justification, models, pseudoscience | `references/guidance/knowledge-and-method.md` | claim-check, research; review and student-feedback via claim-check |
+| Evidence types, which evidence answers which question, expertise, consensus | `references/guidance/evidence.md` | claim-check, research; review and student-feedback via claim-check |
+| Fallacies, statistics and method errors, biases | `references/guidance/reasoning-errors.md` | claim-check, research; review and student-feedback via claim-check |
+| Uncertainty, scope, interests, corrections | `references/guidance/honesty.md` | claim-check, language-review, research, `SKILL.md` (writing style), `references/writing/styles.md`; review and student-feedback via claim-check |
+| How students learn, feedback, UDL, generic skills | `references/guidance/learning.md` | design-advice, research, exercise-check, walkthrough, review |
+| Objectives and their level, prerequisites, progression, simplification, core content, workload | `references/guidance/course-design.md` | design-advice, research, walkthrough, restructuring, review |
+| What exercises can show, fairness, criteria, AI use | `references/guidance/exercises.md` | design-advice, research, exercise-check, walkthrough, review, `references/writing/styles.md` |
+| Motivation and engagement, pacing | `references/guidance/engagement.md` | design-advice, research, review |
+| Computing, software engineering, programming teaching, mathematics | `references/guidance/computing.md` | claim-check, design-advice, research, exercise-check, walkthrough, review |
+| Planning and evaluating a course | `references/guidance/course-production.md` | design-advice (new-run hands over), research |
 | Accessibility | `course-material-accessibility-review` | review |
-| WCAG criteria for course content; what the law requires | `references/accessibility.md` | accessibility-review, `references/writing/styles.md` |
+| WCAG criteria for course content; what the law requires | `references/accessibility.md` | accessibility-review, research, `references/writing/styles.md` |
 | Whose style comes first, writing styles and when each fits, plain language | `references/writing/styles.md` | language-review, exercise-check, translation-sync, restructuring, student-feedback, review, `SKILL.md` (writing style), `references/guidance/exercises.md` |
 | Finnish norms and clarity; easy-to-read Finnish on request | `references/writing/finnish.md` | language-review, translation-sync, restructuring, new-run, `SKILL.md` (writing style), `references/writing/styles.md` |
 | Swedish (Finland Swedish) norms and clarity | `references/writing/swedish.md` | language-review, translation-sync, restructuring, new-run, `references/writing/styles.md` |
