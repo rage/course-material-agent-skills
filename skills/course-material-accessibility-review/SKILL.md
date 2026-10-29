@@ -15,7 +15,7 @@ Raw blocks of the pages in scope, exercise instructions (`get_exercise`), and an
 
 ## Check
 
-- Read `course-material/references/standards/accessibility.md` for the criteria that apply to course content; its **Is it required?** section only when the teacher asks whether something is legally required.
+- Read `course-material/references/accessibility.md` for the criteria that apply to course content; its **Is it required?** section only when the teacher asks whether something is legally required.
 - **Images**: informative images have alt text saying what they show or mean in context; decorative ones `alt: ""`; charts carry their essentials in alt or nearby text; text in an image is also in the alt or text; a linked image needs a name. Filenames as alt text are findings.
 - **Headings**: one logical outline, no skipped levels, not used for looks. A bold paragraph acting as a heading is a finding.
 - **Link texts** make sense alone: no "click here", "read more" or bare URLs.

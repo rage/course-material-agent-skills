@@ -11,7 +11,7 @@ description: "Split, merge, move or reorder modules, chapters, pages and section
 
 ## Plan first
 
-Agree a before/after outline before writing anything, with its consequences: changed paths, chapter renumbering, moved exercises and their effective deadline (own, else the target chapter's), module point totals against completion thresholds, and removals. Ask which dates a new chapter gets. A new module starts with manual completion and certificates off; say so.
+Agree a before/after outline before writing anything, with its consequences: changed paths, chapter renumbering, moved exercises and their effective deadline (`course-material` **Pitfalls**), module point totals against completion thresholds, and removals. Ask which dates a new chapter gets. A new module starts with manual completion and certificates off; say so.
 
 A move that makes an exercise's effective deadline earlier needs its own, separate confirmation.
 

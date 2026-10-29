@@ -8,14 +8,13 @@ description: "Review a page, chapter or whole courses.mooc.fi course for many is
 1. Load the `course-material` skill and write by its **Writing style** rule.
 2. Read `course-material/references/reviewing.md` and follow it for scope, findings and approval.
 3. Agree the scope and checks (below).
-4. Read each page once (`state: published`) and each exercise once (`get_exercise`), and run every chosen check on that text:
+4. Read each page once (`state: published`; the staged state when the teacher wants unpublished changes reviewed) and each exercise once (`get_exercise`). Call `get_course_structure`, `get_course_settings` and `get_course_glossary_and_references` once and reuse the results. Run every chosen check on that text; from a check skill's Collect section, fetch only what the text read lacks:
    - links: use the `course-material-link-check` skill's Collect and Check sections;
    - language: use the `course-material-language-review` skill's Collect and Check sections;
    - claims and currency: use the `course-material-claim-check` skill's Collect and Check sections; it needs web search or fetch tools, else report claims as not checked;
-   - accessibility: use the `course-material-accessibility-review` skill's Collect and Check sections;
+   - accessibility: use the `course-material-accessibility-review` skill's Collect and Check sections (the axe run is the part to fetch);
    - pedagogy, only when asked or named in `workflow.md`: the What to check sections of `course-material/references/guidance/course-design.md`, `course-material/references/guidance/learning.md`, `course-material/references/guidance/exercises.md` and `course-material/references/guidance/engagement.md` (computing or mathematics courses: also `course-material/references/guidance/computing.md`), after `course-material/references/guidance/trust.md`;
    - the review-only checks below.
-   Scope, report and approval stay in this skill.
 5. Report one merged list by `course-material/references/reviewing.md`. Mention `course-material-student-walkthrough` or `course-material-exercise-check` only when findings point there.
 6. Fix approved items by the Fix section of the check's skill. Show additions longer than a paragraph as draft text first, written by `course-material/references/writing/styles.md`. For duplication fixes, use the `course-material-restructuring` skill.
 

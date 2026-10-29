@@ -9,9 +9,7 @@ How to write course text: whose style comes first, what holds in every style, an
 3. The course's own style, inferred from its text and from how the teacher writes: terms, spelling variety, typography, form of address, register, voice. Never ask the teacher to choose what the course already shows.
 4. The style below that fits the text.
 
-- A writing preference the teacher clearly states is followed at once and saved in `preferences.md` (root `SKILL.md` **Remembering**).
-- Never restyle text you weren't asked to change. Keep the teacher's tone, terms, language and typography; translate only when asked.
-- When you resolve a conflict between these, mention it, with the option of a course-wide bulk edit.
+Saving stated preferences, never restyling unasked, and mentioning resolved conflicts: root `SKILL.md` **Remembering** and **Writing style**.
 
 ## In every style
 
@@ -20,7 +18,7 @@ How to write course text: whose style comes first, what holds in every style, an
 - Concise, never flattened: cut padding, filler, hedging and repetition, and say each thing once. Keep precise terms (explained on first use), nuance, depth and the teacher's voice. Never invent length limits.
 - One term per concept, as the course already uses it.
 - Logical progression, relevant examples, and activities aligned with the objectives.
-- Accessible: `course-material/references/standards/accessibility.md` for images, headings, links, tables and media.
+- Accessible: `course-material/references/accessibility.md` for images, headings, links, tables and media.
 
 ## Styles
 

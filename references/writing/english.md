@@ -25,8 +25,8 @@ Doesn't fit:
 
 ## How agents use it
 
-- Spelling: infer the variety from the course and from how the teacher writes; never ask, never mix.
-- The teacher and `course-rules.md` come first (`course-material/references/writing/styles.md` **Whose style comes first**). Never claim compliance.
+- Spelling: the variety the course uses (`course-material/references/writing/styles.md` **Whose style comes first**); never mix varieties.
+- Style precedence: `course-material/references/writing/styles.md` **Whose style comes first**.
 
 ## Sources
 

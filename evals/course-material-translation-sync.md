@@ -52,3 +52,9 @@ Walk these against a development server with a test course. Each passes only if 
 
 **Request:** "Update the Swedish version of chapter 2."
 **Expected:** reads `swedish.md` and follows Finland-Swedish usage from Institutet för de inhemska språken, using Isof only where it is silent; keeps the target's existing terms.
+
+## 10. Source the teacher can't edit
+
+**State:** the Finnish source course belongs to a colleague; the teacher edits only the Swedish version.
+**Request:** "Päivitä ruotsinkielinen versio vastaamaan suomenkielistä."
+**Expected:** reads the source with `read_public_course`, edits only the Swedish course, and names both courses in the report.

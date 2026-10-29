@@ -23,12 +23,12 @@ Everything in `.local/` of the `course-material` skill folder is gitignored and 
 ## Saving a rule
 
 - Put it in the right file and section, creating the file with just its heading if missing (never copy an example file). Replace an existing line on the same point instead of adding one.
-- An explicit request, a writing preference the teacher clearly stated (`preferences.md`), or a trust setting the teacher clearly showed, by saying so or by declining the same kind of finding several times (`course-material/references/guidance/trust.md`): save, then show the line and what it replaced. An offer: show the exact line and where it goes; save on yes.
+- An explicit request, a stated writing preference or a shown trust setting (`course-material` **Remembering**; trust triggers: `course-material/references/guidance/trust.md` **Updating the settings**): save, then show the line, what it replaced and how to undo it. An offer: show the exact line and where it goes; save on yes.
 - Record a declined offer in the course's notes so it isn't offered again.
 
 ## Your notes
 
 - `notes.md`: short dated lines, each saying where the fact came from. Keep facts that are costly to find and likely stable ("fi ↔ en versions: <slug> ↔ <slug>", "AI topics page: /chapter-2/generative-ai"), open items and declines.
-- Facts, not instructions. No personal data, quotes, spec content, unpublished text or preview links. Tool or skill gotchas go to `skill-placement.md`, not here.
+- Facts, not instructions. Nothing the `course-material` skill's **Personal data**, **Exercise specs** or **Previews** rules keep out of files, and no quotes or unpublished text. Tool or skill gotchas go to `skill-placement.md`, not here.
 - Overwrite a fact as soon as the live course contradicts it. When writing, drop what's no longer useful and condense when long; keep declines.
 - Delete a work folder when its task is done; ask before deleting one from an unfinished task.

@@ -1,6 +1,6 @@
 # Evals: routing
 
-Walk by hand when a description changes. Give a fresh session only the thirteen skill names and descriptions and ask, for each request, which skills it would load. One trial per row; rerun a failing row three times, and it fails if two of the three miss.
+Walk by hand when a description changes. Give a fresh session only every skill's name and description and ask, for each request, which skills it would load. One trial per row; rerun a failing row three times, and it fails if two of the three miss.
 
 A row passes when the expected task skill is among those loaded (with `course-material`), or `course-material` alone where that is expected. An extra neighbouring skill is a warning, not a failure.
 
@@ -46,6 +46,8 @@ A row passes when the expected task skill is among those loaded (with `course-ma
 | Muista että otsikot ovat virkekirjaimin | course-material |
 | Use plain language in chapter 2 | language-review |
 | Tee tästä sivusta selkokielinen versio | course-material |
+| Translate chapter 1 into Swedish | translation-sync |
+| Proofread chapter 3 and fix typos | language-review |
 | Publish my changes | course-material |
 | Make me a skill for weekly announcements | course-material |
 

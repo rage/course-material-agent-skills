@@ -11,7 +11,7 @@ description: "Find and fix broken or outdated links, images, files, videos and D
 
 ## Collect
 
-- Per chapter, `find_replace` without `replace`: `{"find": "href=|src=|https?://|mailto:|^/", "regex": true, "attributes": ["/.*/"]}`. It covers rich text, block attributes such as button `url`, relative `/paths` and exercise instructions. Previews are truncated: read the hit blocks raw for full URLs.
+- In a review, take links from the raw text already read and skip this scan. Otherwise one course-wide `find_replace` without `replace`, split per chapter only when the result is truncated: `{"find": "href=|src=|https?://|mailto:|^/", "regex": true, "attributes": ["/.*/"]}`. It covers rich text, block attributes such as button `url`, relative `/paths` and exercise instructions. Previews are truncated: read the hit blocks raw for full URLs.
 - `url` and `doi` in each reference's `bibtex` from `get_course_glossary_and_references`.
 - Check each unique URL once; remember every place it appears.
 
@@ -19,8 +19,8 @@ description: "Find and fix broken or outdated links, images, files, videos and D
 
 - **Internal** (relative paths and absolute URLs into this course): compare paths with `url_path` in `get_course_structure`. An old path works through a redirect but should be updated; a path no page has is broken: ask where the content went, never guess. A link to a hidden page works only for the teacher. Check `#anchors` on the target page's preview.
 - **Other courses.mooc.fi courses**: report each as "intended?"; it may point at last year's run.
-- **External**: status from `curl` (HEAD, then GET when HEAD fails, following redirects), never from a fetch tool that summarises pages. 404 and 410 are broken; a redirect to another site or a generic page means moved; 401, 403, 429 and timeouts mean "check by hand", left unchanged. Suggest `https://` where it works.
-- **Soft 404s**: a 200 page that says "not found" or lands on a front page.
+- **External**: status from `curl`, never from a fetch tool that summarises pages: one script over all unique URLs, one GET each (`curl -sL -m 15 -o <file> -w '%{http_code} %{url_effective}'`), pausing between requests to the same host. 404 and 410 are broken; a redirect to another site or a generic page means moved; 401, 403, 429 and timeouts mean "check by hand", left unchanged. Suggest `https://` where it works.
+- **Soft 404s**: a 200 page whose saved body says "not found", or that lands on a front page.
 - **Videos**: removed or private YouTube and Vimeo videos fail their oEmbed endpoint.
 - **DOIs**: resolve through `https://doi.org/`.
 - **Images and files**: failed loads in the preview (how: `course-material/references/visual-checks.md`), else fetch them.

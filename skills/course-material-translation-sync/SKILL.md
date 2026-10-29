@@ -10,9 +10,9 @@ description: "Bring a courses.mooc.fi language version in line with its source, 
 
 ## Scope
 
-- Infer source, target and scope from the request and `language_versions`; ask only when ambiguous.
+- Infer source, target and scope from the request and `language_versions`; ask only when ambiguous. A source the teacher can't edit is read with `read_public_course`, page by page; name it in the report.
 - **Code samples** (comments, strings): a `workflow.md` line decides; else follow what the target already does; ask only when neither says.
-- Pair pages by `page_language_group_id` and exercises by `exercise_language_group_id`, by position where those are missing. Show the mapping when it isn't one-to-one.
+- Pair pages and exercises by `course-material/references/course-facts.md` **Language versions**. Show the mapping when it isn't one-to-one.
 
 ## Compare
 

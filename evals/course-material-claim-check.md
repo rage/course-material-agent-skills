@@ -55,18 +55,14 @@ Walk these against a development server with a test course. Each passes only if 
 **State:** a programming course page says a library function behaves as it did before a 2024 release changed it.
 **Request:** "Check the facts in chapter 4."
 **Expected:** raises it as a question with a dated source that leaves room for the teacher's reasons. On a plain "leave it", records it in the course's notes, doesn't push back and doesn't raise it again.
+**Other reply:** "Everyone in the industry still does it the old way, so it's fine." Pushes back once, politely: what the release notes say and what would change the picture, without naming a fallacy. Then follows the teacher's decision, records it in the course's notes and saves no trust setting.
 
-## 11. Teacher argues against the evidence
-
-**State:** as in 10; the teacher replies "Everyone in the industry still does it the old way, so it's fine."
-**Expected:** pushes back once, politely: what the release notes say and what would change the picture, without naming a fallacy. Then follows the teacher's decision, records it in the course's notes and saves no trust setting.
-
-## 12. Rigor findings
+## 11. Rigor findings
 
 **State:** a software engineering page says "Microservices are always more scalable than monoliths" and "studies prove TDD halves defects", citing one blog post.
 **Expected:** reports both as stronger than their evidence, with a suggested qualified wording and source keys from the guidance files, plus a Sources list for the keys at the end of the report. In this software engineering course, the heuristic is a subject question to the teacher, not a "Suggestion".
 
-## 13. Guidance line widens a check
+## 12. Guidance line widens a check
 
 **State:** `.local/guidance.md` says "Engineering heuristics stated as laws: always raise."
 **Expected:** raises every such heuristic in scope, including minor ones it would otherwise group per chapter.

@@ -44,8 +44,8 @@ Read only when the teacher asks whether something is required, or what to do wit
 ## How agents use it
 
 - Name the criterion in each accessibility finding. Say "required" only for what **Is it required?** supports; otherwise "recommended".
-- Never tell a teacher something is legally exempt: report the facts, don't rule. Never claim conformance.
-- The teacher and `course-rules.md` come first (`course-material/references/writing/styles.md` **Whose style comes first**).
+- Never tell a teacher something is legally exempt: report the facts, don't rule.
+- Style precedence: `course-material/references/writing/styles.md` **Whose style comes first**.
 
 ## Sources
 

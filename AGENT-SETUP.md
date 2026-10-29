@@ -24,13 +24,13 @@ chmod +x <skill folder>/.git/hooks/post-merge
 
 ## 3. MCP server
 
-Server `https://courses.mooc.fi/api/v0/mcp` unless the teacher gave another; name `courses-mooc-fi`. Don't start a sign-in. If a `courses-mooc-fi` server already exists with another address, ask before replacing it.
+Server `https://courses.mooc.fi/api/v0/mcp` unless the teacher gave another; name `courses-moocfi`. Don't start a sign-in. If a `courses-moocfi` server already exists with another address, ask before replacing it.
 
-- Claude Code: `claude mcp add --transport http --scope user courses-mooc-fi <server>` (to replace one, `claude mcp remove --scope user courses-mooc-fi` first).
+- Claude Code: `claude mcp add --transport http --scope user courses-moocfi <server>` (to replace one, `claude mcp remove --scope user courses-moocfi` first).
 - Codex: `codex features enable mcp_2026_07_28`. In `$CODEX_HOME/config.toml` (default `~/.codex`), add or replace this table, keeping the rest; `codex mcp add` would start a sign-in:
 
   ```toml
-  [mcp_servers.courses-mooc-fi]
+  [mcp_servers.courses-moocfi]
   url = "<server>"
   ```
 
@@ -51,7 +51,7 @@ Allow exactly `git -C <skill folder> pull --ff-only`, with the path written as [
 
 ## 5. What the agent remembers
 
-Create no file. Tell the teacher that, when they ask, you remember how they want text written, what content goes where and how you should work, in `<skill folder>/.local/` (`preferences.md`, `course-rules.md`, `workflow.md`; formats in the `*.example.md` files), and that they can edit those files themselves. The exception is `guidance.md`, how far to rely on the skill's guidance: you save it straight away when they clearly show how they feel, by saying so or by declining the same kind of finding several times, and tell them.
+Create no file. Tell the teacher that, when they ask, you remember how they want text written, what content goes where and how you work, in `<skill folder>/.local/`, which they can edit themselves. A writing preference stated as a standing rule, and a trust setting they clearly show, are saved straight away, with how to undo it.
 
 ## 6. Private skills repository
 
@@ -59,7 +59,7 @@ Always ask: use an existing one, create one, or skip; when `<skill folder>/.loca
 
 - Existing: ask where it is; clone it into `<skills folder>` if it isn't on this computer.
 - New: `git init <skills folder>/private-skills` with a `skills/` folder. If `git config user.email` is empty, ask for the name and email to commit with.
-- Write `Private skills: <absolute path>` in `<skill folder>/.local/workflow.md` (create the file with a `# Workflow` heading if missing; if a different path is there, ask first), and allow `git -C <private repo> pull --ff-only` as in step 4.
+- Write `Private skills: <absolute path>` in `<skill folder>/.local/workflow.md` (create the file with a `# Workflow` heading if missing; if a different path is there, ask first), and allow `git -C <private repo> pull --ff-only` as in step 4: in Claude Code, a second `permissions.allow` entry; in Codex, a second `prefix_rule` in the same rules file, keeping the first, then check both commands.
 - Claude Code: run `bash <skill folder>/setup/link-task-skills.sh <skills folder> <private repo>`, and add a post-merge hook in the private repository that runs the same command.
 - Codex: if the repository is outside `~/.agents/skills`, link its `skills/` folder there.
 - Push: ask whether to keep a copy on a git host; recommend no unless they use several computers. Create the remote repository as private and check its visibility before the first push (GitHub: `gh repo view <repo> --json visibility`); if you can't check, ask the teacher to check it on the host's website.
@@ -70,4 +70,4 @@ If `playwright-cli --version` fails, ask whether to install it (needs Node.js): 
 
 ## 8. Finish
 
-Summarise what you set up and where, point to "Remove" in SETUP.md, and give the last steps: restart the agent; sign in (Claude Code: `/mcp`, choose `courses-mooc-fi`; Codex: `codex mcp login courses-mooc-fi` in a terminal); then ask "List my courses on courses.mooc.fi."
+Summarise what you set up and where, point to "Remove" in SETUP.md, and give the last steps: restart the agent; sign in (Claude Code: `/mcp`, choose `courses-moocfi`; Codex: `codex mcp login courses-moocfi` in a terminal); then ask "List my courses on courses.mooc.fi."

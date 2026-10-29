@@ -12,10 +12,10 @@ A tool or skill gotcha you ran into (a misleading tool result, a rule that led y
 
 ## The teacher's own repository
 
-Its path is the `Private skills: <path>` line in `.local/workflow.md` of the `course-material` skill folder. If the line is missing, offer to set the repository up as in step 6 of AGENT-SETUP.md.
+Its path is the `Private skills: <path>` line in `.local/workflow.md` of the `course-material` skill folder. If the line is missing, offer to set the repository up as in AGENT-SETUP.md **Private skills repository**.
 
 - One folder per skill, `skills/<name>/SKILL.md`; the `name` matches the folder and never starts with `course-material`.
 - Write it like the public skills: the description says what it does and when to use it; the body holds only what the agent wouldn't do right unaided.
 - After a change the teacher approved: commit with a one-line message, and push if the repository has a remote.
 - Teacher guidance documents (named in `.local/guidance.md`) go in its `guidance/` folder.
-- Claude Code: a new skill needs linking. Run the repository's post-merge hook, or the link command from AGENT-SETUP.md step 6.
+- Claude Code: a new skill needs linking. Run the repository's post-merge hook, or the link command from AGENT-SETUP.md **Private skills repository**.

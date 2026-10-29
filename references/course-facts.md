@@ -18,7 +18,7 @@ What the course states about itself, and where it lives. review, student-feedbac
 
 ## Language versions
 
-- Each language version is a separate course; `language_group_id` ties them together. Pages pair by `page_language_group_id`, exercises by `exercise_language_group_id`; ids differ per version.
+- Each language version is a separate course; `language_group_id` ties them together. Pages pair by `page_language_group_id`, exercises by `exercise_language_group_id`, by position where those are missing; ids differ per version.
 - Copying a course into a new language group gives its exercises new pairing groups; page pairing is kept.
 
 ## Copies
@@ -28,3 +28,5 @@ Copying a course rewrites link targets to the new course, not URLs written as vi
 ## What the tools can't read or change
 
 Course instances and their start, end and enrolment dates; exercise settings other than name, instructions and deadline; grading; linked PDFs and slides. Point the teacher to the course editor for these.
+
+Courses the teacher can't edit are readable only with `read_public_course` (root `SKILL.md` **Reference courses**).

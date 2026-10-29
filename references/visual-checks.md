@@ -14,11 +14,11 @@ playwright-cli screenshot --filename=page-mobile.png
 playwright-cli close
 ```
 
+- In a review, keep one browser session: `open` the first preview, `goto` the next, and run the console, requests, anchor and axe checks on each page in that visit. Screenshots and the mobile pair only for pages with new or moved layout blocks (images, tables, columns).
 - Quote the URL: in PowerShell and cmd an unquoted `&` ends the command.
 - Snapshots are cheap and exact for text and structure; screenshots are for layout, colour and images. Open each screenshot and look at it. A long page scales down until text is unreadable, so screenshot the changed element (`playwright-cli screenshot <ref>`) instead.
 - Look for: missing or duplicated blocks, raw tags or `[latex]` shown as text, broken images, empty boxes, text overflowing its box, tables wider than a phone screen, and anything that differs from what you meant.
-- Read exercises with `get_exercise`.
-- Installing `playwright-cli` needs the teacher's consent and Node.js; with both, follow step 7 of AGENT-SETUP.md in the `course-material` skill folder.
+- Installing `playwright-cli` needs the teacher's consent and Node.js; with both, follow AGENT-SETUP.md **Browser checks** in the `course-material` skill folder.
 - Codex's default sandbox may block network access, so the browser can't reach the preview. Codex asks for approval; tell the teacher why you need it.
 
 ## axe

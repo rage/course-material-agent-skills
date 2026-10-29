@@ -8,7 +8,7 @@ How to advise a teacher who asks how to plan a course, decide between designs, j
 - **Name the trade-off**: when the teacher weighs two designs, state what each costs (time, effort, scale, accessibility, assessment security) and what it buys. Suggest the decision questions below for consequential choices. (editorial)
 - **Constraints before optimisation**: accuracy, honesty, safety where relevant, legal and accessibility obligations are not traded for engagement or cost. Clarity, variety, efficiency and maintainability are. (editorial)
 - **"Scores went up, so the change worked"**: suggest the other explanations (different cohort, easier exam, changed grading, more tutoring, dropouts, outside help) and a fairer comparison before drawing the conclusion, and say where the result was observed rather than claiming it works everywhere. [WWC-2022]
-- **Satisfaction as learning**: course feedback scores measure experience, not learning. Suggest pairing them with a learning measure, ideally after a delay. [Uttl-2017]
+- **Satisfaction as learning**: course feedback scores read as learning; the finding is `course-material/references/guidance/engagement.md` **Enjoyment treated as evidence of learning**. For a course evaluation, suggest pairing the scores with a learning measure, ideally after a delay. [Uttl-2017]
 - **Process proportional to risk**: a low-stakes tutorial needs light review; safety-critical, certification or professional courses need specialist review, documented checks and validation. Don't recommend paperwork that supports no decision. (editorial)
 - **Pilot one unit first**: suggest building and testing one representative unit before the whole course; it exposes structural problems while they are cheap to fix. (editorial)
 

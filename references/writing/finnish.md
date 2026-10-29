@@ -28,7 +28,7 @@ Doesn't fit:
 
 ## Selkokieli
 
-Read only when the teacher asks for an easy-to-read (selkokielinen) version, or the course states selkokieli readers as its audience. Never for ordinary course text, even "to make it clearer", and never as an unasked simplify pass.
+Read only when `course-material/references/writing/styles.md` **Easy-to-read** applies: a selkokielinen version the teacher asks for, or a course written for selkokieli readers.
 
 Selkokieli is Finnish adapted for readers who find standard Finnish hard. Selkokeskus publishes writing guidance, the Selkokielen mittari (2.0, 2022, free, for expert evaluation) and the Selkotunnus mark. [Selkokeskus] [Selkokeskus-mittari]
 
@@ -39,7 +39,7 @@ Selkokieli is Finnish adapted for readers who find standard Finnish hard. Selkok
 ## How agents use it
 
 - Cite the ohjepankki page that supports a finding. Never call the course "hyvää virkakieltä".
-- The teacher, `course-rules.md` and the course's own conventions come first (`course-material/references/writing/styles.md` **Whose style comes first**).
+- Style precedence: `course-material/references/writing/styles.md` **Whose style comes first**.
 
 ## Sources
 

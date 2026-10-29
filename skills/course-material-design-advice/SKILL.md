@@ -6,7 +6,7 @@ description: "Advise on course design and teaching for courses.mooc.fi courses: 
 # Course design advice
 
 1. Load the `course-material` skill and write by its **Writing style** rule.
-2. Read `course-material/references/guidance/trust.md`: how far to rely on each guidance file and how to raise points with the teacher.
+2. Read `course-material/references/guidance/trust.md`.
 3. Read the guidance files the request needs:
    - structure, objectives, prerequisites, progression, core content, workload: `course-material/references/guidance/course-design.md`;
    - practice, examples, feedback, how students learn, inclusive design (UDL): `course-material/references/guidance/learning.md`;

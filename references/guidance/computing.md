@@ -4,7 +4,7 @@ What to notice in computer science, software engineering, programming and mathem
 
 ## What to check
 
-- **Which kind of claim**: a statement about an algorithm (provable), a program (testable), a system in production (needs empirical evidence and requirements) or a practice (context-dependent). Flag text that justifies one kind with evidence suited to another, e.g. "the proof shows the program is fast". [CS2023] [SWEBOK-2025]
+- **Which kind of claim**: a statement about an algorithm (provable), a program (testable), a system in production (needs empirical evidence and requirements) or a practice (context-dependent). Flag text that justifies one kind with evidence suited to another, e.g. "the proof shows the program is fast". General case: `course-material/references/guidance/knowledge-and-method.md` **Wrong kind of justification**. [CS2023] [SWEBOK-2025]
 - **Big-O read as speed**: "O(n log n), so it is always faster than O(n²)". Suggest the qualification: asymptotic bounds ignore constants, input size and hardware; for small or nearly sorted inputs the "slower" algorithm can win. (editorial)
 - **Upper bound read as exact cost**: Big-O used where the text means a tight bound (Θ) or an exact count. Suggest the precise term where the course has introduced it. (editorial)
 - **Tests read as proof**: "all tests pass, so the program is correct". Testing shows behaviour on the inputs tried; suggest "passes these tests". (editorial)

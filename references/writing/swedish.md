@@ -14,7 +14,7 @@ Fits:
 
 Doesn't fit:
 - A Swedish course aimed at readers in Sweden: Isof comes first there.
-- Finnish and English text; lättläst versions unless the teacher asks for one.
+- Finnish and English text; lättläst, except as `course-material/references/writing/styles.md` **Easy-to-read** allows.
 
 ## Applies here
 
@@ -26,7 +26,7 @@ Doesn't fit:
 ## How agents use it
 
 - Finlandisms the teacher or course uses on purpose stay: report, don't change.
-- The teacher and `course-rules.md` come first (`course-material/references/writing/styles.md` **Whose style comes first**).
+- Style precedence: `course-material/references/writing/styles.md` **Whose style comes first**.
 
 ## Sources
 
