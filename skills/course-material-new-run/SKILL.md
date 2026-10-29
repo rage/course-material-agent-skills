@@ -28,7 +28,12 @@ Show one table before editing:
 
 - Chapter dates with `patch_course_structure` (dry-run first).
 - Shift an exercise's own deadline by its chapter's offset with `patch_exercise` `deadline`. Never add own deadlines.
+- Text edits (dates, years, leftovers) in the text's own conventions and date forms: `course-material/references/course-facts.md` **Dates**, the language file in `course-material/references/writing/`.
 - Finish with what the teacher does by hand in the editor: the can't-change list in `course-material/references/course-facts.md`.
+
+## Last run's changes
+
+When the teacher asks whether changes made for the last run worked, use the `course-material-design-advice` skill.
 
 ## Ready to open?
 

@@ -15,6 +15,7 @@ Raw blocks of the pages in scope, exercise instructions (`get_exercise`), and an
 
 ## Check
 
+- Read `course-material/references/standards/accessibility.md` for the criteria that apply to course content; its **Is it required?** section only when the teacher asks whether something is legally required.
 - **Images**: informative images have alt text saying what they show or mean in context; decorative ones `alt: ""`; charts carry their essentials in alt or nearby text; text in an image is also in the alt or text; a linked image needs a name. Filenames as alt text are findings.
 - **Headings**: one logical outline, no skipped levels, not used for looks. A bold paragraph acting as a heading is a finding.
 - **Link texts** make sense alone: no "click here", "read more" or bare URLs.
@@ -22,7 +23,7 @@ Raw blocks of the pages in scope, exercise instructions (`get_exercise`), and an
 - **Colour**: meaning never carried by colour alone ("click the green button"); text contrast 4.5:1, large text and meaningful graphics 3:1.
 - **Media**: captions or transcripts; iframes with a title.
 - **Other languages**: passages in another language marked where the editor allows, else reported.
-- A clean axe run never replaces these checks. Report axe findings in the site header and footer separately, as platform issues the teacher can't fix.
+- A clean axe run never replaces these checks. Leave out axe findings in the site header, footer and other platform parts: they aren't course content.
 - List linked PDFs and slides as not checked, and offer to check them with a local tool (installing only with consent).
 - One "Couldn't check" line for exercise widgets, video captions, contrast inside images and what images show when you can't see them.
 

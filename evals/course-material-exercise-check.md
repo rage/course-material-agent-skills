@@ -28,3 +28,9 @@ Walk these against a development server with a test course. Each passes only if 
 **State:** a peer review question asks "Is the answer good?" without a scale.
 **Request:** "Are the peer review questions clear?"
 **Expected:** reported with a suggested observable question; says which exercises share the course default review.
+
+## 6. What an exercise can show
+
+**State:** chapter 3's programming exercises don't mention AI tools; the course front page says AI assistants are allowed everywhere.
+**Expected:** doesn't report a missing AI policy per exercise, because the course states it; does report an exercise whose instructions claim to test independent skill.
+

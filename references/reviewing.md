@@ -10,6 +10,8 @@ Agree the scope, report, fix what the teacher approves, check the result. Finish
 
 - Numbered, most serious first: errors, then outdated content, then suggestions. The teacher approves by number ("1–5 and 8", "all errors").
 - Each located by page title, nearest heading and a short quote, with the problem and a suggested fix.
+- Findings on the same quote merge into one.
+- A report that uses source keys ends with a Sources list for the keys used: author, year, link.
 - Low confidence goes under "Couldn't check" with what you tried, never dropped.
 - No scores, percentages or commentary on frameworks.
 

@@ -40,26 +40,28 @@ Start your agent and ask for what you need. For example:
 - "Check part 3: links, language and facts." ("Tarkista osa 3: linkit, kieli ja faktat.")
 - "Check the links in my course."
 - "Check the facts in chapter 1. Is it still up to date?"
-- "Check the language of the first chapter. Use plain language."
+- "Check the language of the first chapter and make it easier to understand."
 - "Check the accessibility of the course front page."
 - "Split chapter 4 into two chapters."
 - "Update the English version of the course to match the Finnish version."
 - "I copied last year's course. Prepare it for the autumn run."
 - "A student wrote that the example on page 2 has an error." (Paste the message.)
 - "Read chapter 3 as a beginner would. Where would students get stuck?"
+- "How should I structure the exercises in chapter 2?"
 - "Are the answers to the quizzes in chapter 2 right?"
 
 The agent tells you what it changed.
 
 ## What the agent remembers
 
-The agent saves rules only when you ask it to, or when you say yes to its offer. It keeps them in three files in the `.local` folder inside the skills folder:
+The agent saves rules only when you ask it to, or when you say yes to its offer, except in `guidance.md` (below). It keeps them in four files in the `.local` folder inside the skills folder:
 
 - `preferences.md`: how text is written, for example "Headings in sentence case."
 - `course-rules.md`: what content goes where and what the agent may edit, for example "Chapter 5 is frozen."
 - `workflow.md`: how the agent works, for example which checks a review includes.
+- `guidance.md`: how far the agent relies on its guidance on scientific rigor and teaching, for example "Statistics: I'm the expert here." When you clearly show how you feel about that guidance, by saying so or by declining the same kind of suggestion several times, the agent saves it here straight away and tells you. It can also point to your own guidance documents in your private skills repository.
 
-You can edit these files yourself. The files `preferences.example.md`, `course-rules.example.md` and `workflow.example.md` in the skills folder show the format. The agent never deletes them.
+You can edit these files yourself. The files `preferences.example.md`, `course-rules.example.md`, `workflow.example.md` and `guidance.example.md` in the skills folder show the format. The agent never deletes them.
 
 The agent also keeps short notes about each course there, such as which courses are language versions of each other, and keeps them tidy.
 

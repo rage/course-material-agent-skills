@@ -51,7 +51,7 @@ Allow exactly `git -C <skill folder> pull --ff-only`, with the path written as [
 
 ## 5. What the agent remembers
 
-Create no file. Tell the teacher that, when they ask, you remember how they want text written, what content goes where and how you should work, in `<skill folder>/.local/` (`preferences.md`, `course-rules.md`, `workflow.md`; formats in the `*.example.md` files), and that they can edit those files themselves.
+Create no file. Tell the teacher that, when they ask, you remember how they want text written, what content goes where and how you should work, in `<skill folder>/.local/` (`preferences.md`, `course-rules.md`, `workflow.md`; formats in the `*.example.md` files), and that they can edit those files themselves. The exception is `guidance.md`, how far to rely on the skill's guidance: you save it straight away when they clearly show how they feel, by saying so or by declining the same kind of finding several times, and tell them.
 
 ## 6. Private skills repository
 

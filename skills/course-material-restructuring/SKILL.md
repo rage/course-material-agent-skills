@@ -7,6 +7,7 @@ description: "Split, merge, move or reorder modules, chapters, pages and section
 
 1. Load the `course-material` skill and write by its **Writing style** rule.
 2. Read `course-material/references/course-facts.md` for deadlines and completion thresholds.
+3. When the plan reorders content, read `course-material/references/guidance/trust.md` and `course-material/references/guidance/course-design.md`'s **Order that breaks prerequisites** point, and check the new order against it.
 
 ## Plan first
 
@@ -26,5 +27,6 @@ A move that makes an exercise's effective deadline earlier needs its own, separa
 - Links to old paths, and position references in any course language ("in chapter 3", "luvussa 3", "på föregående sida").
 - Chapter front pages that list their pages or topics.
 - **Duplication** found by a review: keep one home (the course rule's, if one names it) and replace the others with a short pointer and a link.
+- Write new text (pointers, front pages, titles, position references) by `course-material/references/writing/styles.md` and the page language's file.
 
 Finish with a list of changed paths, old → new; anchors aren't redirected. If a topic's home page moved, say the course rule naming it needs updating. If the course has other language versions, say they need the same change, with the `course-material-translation-sync` skill.

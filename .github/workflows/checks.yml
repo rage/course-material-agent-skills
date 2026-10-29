@@ -36,10 +36,33 @@ jobs:
       - name: Named reference files exist
         run: |
           missing=0
-          for file in $(grep -ohE 'references/[A-Za-z0-9_/.-]+\.md' SKILL.md skills/*/SKILL.md references/*.md | sort -u); do
+          for file in $(grep -ohE 'references/[A-Za-z0-9_/.-]+\.md' SKILL.md skills/*/SKILL.md $(git ls-files 'references/*.md') | sort -u); do
             test -f "$file" || { echo "missing: $file"; missing=1; }
           done
           exit $missing
+      - name: Guidance points cite their sources
+        run: |
+          python3 - <<'PY'
+          import pathlib, re, sys
+          failed = False
+          key = re.compile(r"\[([A-Za-z][A-Za-z0-9-]*)\](?!\()")
+          for path in sorted(pathlib.Path("references/guidance").glob("*.md")):
+              text = re.sub(r"`[^`]*`", "", path.read_text())
+              body, _, sources = text.partition("\n## Sources\n")
+              defined = set(re.findall(r"^- \[([^\]]+)\]", sources, re.M))
+              used = set(key.findall(body))
+              section = None
+              for line in body.splitlines():
+                  if line.startswith("## "):
+                      section = line[3:]
+                  elif section == "What to check" and line.startswith("- ") and not key.search(line) and "(editorial" not in line:
+                      print(f"{path}: point without a source key: {line[:60]}"); failed = True
+              for k in sorted(used - defined):
+                  print(f"{path}: key [{k}] not in Sources"); failed = True
+              for k in sorted(defined - used):
+                  print(f"{path}: source [{k}] never used"); failed = True
+          sys.exit(failed)
+          PY
       - name: Shell scripts parse
         run: for script in setup/*.sh; do bash -n "$script"; done
       - name: PowerShell scripts parse

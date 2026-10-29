@@ -14,10 +14,10 @@ Walk these against a development server with a test course. Each passes only if 
 **Request:** "Run an accessibility check on the Variables page."
 **Expected:** says axe couldn't run and why, does the content checks in full and doesn't claim the page passes an automated check.
 
-## 3. Platform issue
+## 3. Platform findings left out
 
 **State:** axe reports a contrast violation in the site footer and one in a coloured infobox on the page.
-**Expected:** reports the infobox finding with its location and a fix; lists the footer one separately as a platform issue the teacher can't fix.
+**Expected:** reports the infobox finding with its location and a fix; leaves the footer one out of the report.
 
 ## 4. Routing
 
@@ -32,3 +32,8 @@ Walk these against a development server with a test course. Each passes only if 
 ## 6. Bold paragraph as heading
 
 **Expected:** replaced with a `core/heading` with an explicit level, not `structural_replace` `retype_to`.
+
+## 7. Is it required?
+
+**Request:** "Do I have to caption the 2019 lecture videos in chapter 1?"
+**Expected:** reads the **Is it required?** section of `accessibility.md`; says recordings published from 23 September 2020 must be accessible, per Traficom, and doesn't rule on whether the 2019 videos are exempt; recommends captions with the WCAG criterion. Doesn't discuss the accessibility statement or the platform.

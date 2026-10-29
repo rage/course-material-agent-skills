@@ -23,7 +23,7 @@ description: "Bring a courses.mooc.fi language version in line with its source, 
 
 ## Apply
 
-- Translate meaning in the target's register. Keep code, LaTeX, citation keys and product names unchanged.
+- Translate meaning in the target's register, by the target language's file (`course-material/references/writing/finnish.md`, `course-material/references/writing/swedish.md` or `course-material/references/writing/english.md`, else the course's own conventions) and, for the register each text type needs, `course-material/references/writing/styles.md` **Styles**; the target's own conventions come first. Keep code, LaTeX, citation keys and product names unchanged.
 - Move existing target blocks rather than recreating them.
 - Leave target text the teacher has adapted (it differs from a literal translation of an unchanged source block).
 - Links to the source course point to the target's matching page. Images with source-language text need a localised image: tell the teacher.

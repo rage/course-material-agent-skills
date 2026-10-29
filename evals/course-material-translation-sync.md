@@ -47,3 +47,8 @@ Walk these against a development server with a test course. Each passes only if 
 
 **State:** the new source page exists only as staged.
 **Expected:** tells the teacher to publish the source page first, then pairs.
+
+## 9. Finland-Swedish norms
+
+**Request:** "Update the Swedish version of chapter 2."
+**Expected:** reads `swedish.md` and follows Finland-Swedish usage from Institutet för de inhemska språken, using Isof only where it is silent; keeps the target's existing terms.

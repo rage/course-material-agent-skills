@@ -7,7 +7,8 @@ description: "Read courses.mooc.fi pages as a student would and report where the
 
 1. Load the `course-material` skill.
 2. Read `course-material/references/reviewing.md` and follow it for findings and the fresh-context subagent brief.
-3. Report only.
+3. Read `course-material/references/guidance/trust.md`, then from `course-material/references/guidance/course-design.md` the **Order that breaks prerequisites**, **Hard transitions passed quickly** and **Simplification that misleads** points, and from `course-material/references/guidance/learning.md` **Misconceptions left standing** and **Unnecessary load for beginners**. For a computing course also `course-material/references/guidance/computing.md`'s **Mental-model shortcuts** and **Known misconceptions not addressed**.
+4. Report only.
 
 - Infer the reader from the course's audiences, prerequisites and earlier chapters; ask only if nothing says.
 - Read the pages in order (`state: published`), the public parts of their exercises and the glossary, and pass them to a fresh-context subagent briefed by `course-material/references/reviewing.md`.
@@ -16,4 +17,4 @@ description: "Read courses.mooc.fi pages as a student would and report where the
 
 ## Alignment
 
-When asked whether content matches the objectives: take each objective from the `moocfi/learning-objectives` block or the chapter front page, find where it's taught and which exercise practises it, and report objectives that are untaught, unpractised, or taught and practised in ways that don't match.
+When asked whether content matches the objectives (by `course-material/references/guidance/course-design.md`'s **Vague objectives**, **Outcome level read from the verb** and **Outcomes, teaching and exercises out of line** points and `course-material/references/guidance/exercises.md`'s **Exercise type vs objective** and **Task wording caps the level**): take each objective from the `moocfi/learning-objectives` block or the chapter front page, find where it's taught and which exercise practises it, and report objectives that are untaught, unpractised, or taught and practised in ways that don't match.

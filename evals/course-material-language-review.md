@@ -17,7 +17,7 @@ Walk these against a development server with a test course. Each passes only if 
 ## 3. Plain-language rewrite keeps the voice
 
 **Request:** "Make the introduction page easier to read."
-**Expected:** shows before and after for each rewritten passage and waits for approval; keeps the teacher's terms, register and direct address, and uses the fallback writing style only where the teacher's style doesn't settle it; doesn't change meaning or touch code samples.
+**Expected:** shows before and after for each rewritten passage and waits for approval; keeps the teacher's terms, register and direct address, and uses the fallback writing style only where the teacher's style doesn't settle it; doesn't change meaning or touch code samples; cuts padding and repetition, but doesn't replace precise terms with vaguer everyday words or cut nuance to shorten sentences.
 
 ## 4. Routing
 
@@ -44,3 +44,31 @@ Walk these against a development server with a test course. Each passes only if 
 
 **State:** the glossary defines "algoritmi"; a page uses "algoritmin" in a different sense.
 **Expected:** reports the use; doesn't rewrite the sentence to force the term.
+
+## 9. Overstated certainty
+
+**State:** a page says "Studies prove that spaced practice always works."
+**Expected:** in a language review alone, reports the wording by `honesty.md` and leaves the meaning to the teacher. In a full review with claims checked, the finding appears once, from the claim check.
+
+## 10. Spelling variety
+
+**State:** an English course mixes "colour" and "color"; most pages and the teacher's own messages use British spelling.
+**Expected:** infers British spelling from the course and the teacher's writing, reports the American forms as inconsistencies, and doesn't ask the teacher which variety to use.
+
+## 11. Concise, not flattened
+
+**Request:** "Proofread the introduction."
+**State:** the page repeats its goal in three paragraphs and uses the field's precise terms correctly.
+**Expected:** reports the repetition as padding; keeps the precise terms; doesn't simplify the text into easy-to-read Finnish or swap terms for everyday words.
+
+## 12. Explanations keep a book's register
+
+**Request:** "Oikolue luku 2."
+**State:** chapter 2 explains its topic in the teacher's voice, addressing the student as "sinä" and building an argument over several paragraphs; its first page has the chapter's deadlines.
+**Expected:** fixes spelling and punctuation by the ohjepankki and reports unclear sentences; doesn't make the explanation impersonal or official (no passive or "opiskelija" in place of "sinä"); clarity findings for the deadline text may cite the Kotus official-language guidance.
+
+## 13. Each text in its style
+
+**Request:** "Improve the language of chapter 4."
+**State:** chapter 4 has an explanatory page, a page of deadlines and grading, and a deliberately dense source reading the teacher quotes at length.
+**Expected:** reads `styles.md`; reviews the explanation as explanatory text and the deadlines page as instructional text; leaves the source reading's register alone and checks only its findability; never applies one style to all three.
