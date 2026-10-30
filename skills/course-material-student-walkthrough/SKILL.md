@@ -7,7 +7,7 @@ description: "Read courses.mooc.fi pages as a student would and report where the
 
 1. Load the `course-material` skill.
 2. Read `course-material/references/reviewing.md` and follow it for findings and the fresh-context subagent brief.
-3. Read `course-material/references/guidance/trust.md`, then from `course-material/references/guidance/course-design.md` the **Order that breaks prerequisites**, **Hard transitions passed quickly** and **Simplification that misleads** points, and from `course-material/references/guidance/learning.md` **Misconceptions left standing** and **Unnecessary load for beginners**. For a computing course also `course-material/references/guidance/computing.md`'s **Mental-model shortcuts** and **Known misconceptions not addressed**.
+3. Read from `course-material/references/guidance/course-design.md` the **Order that breaks prerequisites**, **Hard transitions passed quickly** and **Simplification that misleads** points, and from `course-material/references/guidance/learning.md` **Misconceptions left standing** and **Unnecessary load for beginners**. For a computing course also `course-material/references/guidance/computing.md`'s **Mental-model shortcuts** and **Known misconceptions not addressed**.
 4. Report only.
 
 - Infer the reader from the course's audiences, prerequisites and earlier chapters; ask only if nothing says.

@@ -7,6 +7,7 @@ What the course states about itself, and where it lives. review, student-feedbac
 - Forms to find: Finnish "15.9.2026", "15. syyskuuta", "ma 15.9."; Swedish "15.9.2026", "15 september", "mån 15.9."; English "15 September 2026", "September 15", "Mon 15 Sep". Weekdays and terms ("syksy 2026", "hösten 2026", "autumn 2026") count too.
 - Stored in UTC, written in Helsinki time. Convert each date on its own: daylight saving differs between dates, so never shift by a fixed UTC offset across late March or late October.
 - Check that every written weekday matches its date.
+- An exercise's effective deadline is its own deadline, else its chapter's. The chapter is `chapter_id` from `list_exercises`; in the staged state it is the chapter the exercise will be in after publish.
 - Never shift: publication years, cited studies, laws, version release dates, dates inside URLs.
 - Dates live in page text, exercise names and instructions, page and chapter titles, chapter `opens_at` and `deadline`, exercise deadlines (`list_exercises`), settings and the glossary.
 
@@ -27,6 +28,6 @@ Copying a course rewrites link targets to the new course, not URLs written as vi
 
 ## What the tools can't read or change
 
-Course instances and their start, end and enrolment dates; exercise settings other than name, instructions and deadline; grading; linked PDFs and slides. Point the teacher to the course editor for these.
+A course's slug and language; course instances and their start, end and enrolment dates; exercise settings other than name, instructions and deadline; grading; linked PDFs and slides. Point the teacher to the course editor for these.
 
 Courses the teacher can't edit are readable only with `read_public_course` (root `SKILL.md` **Reference courses**).

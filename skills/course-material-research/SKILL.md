@@ -8,7 +8,7 @@ description: "Research a topic for courses.mooc.fi material: find and weigh sour
 1. Load the `course-material` skill and write by its **Writing style** rule.
 2. Research runs on your web search and fetch tools. If you have neither, stop and say the research can't be done here; never present knowledge from memory as sourced.
 3. Read `course-material/references/reviewing.md` and follow it for scope, approval, "Couldn't check" and the Sources list.
-4. Read `course-material/references/guidance/trust.md` and `course-material/references/guidance/evidence.md`, then the What to check sections **Weigh** names.
+4. Read `course-material/references/guidance/evidence.md`, then the What to check sections **Weigh** names.
 5. Work through the sections below. When the teacher asked for a page with sources, research and draft in one go (**After research**); otherwise report and let the teacher pick what to use.
 
 ## Question
@@ -41,10 +41,11 @@ Decide from the question and say which in one line:
 - **Status**: check `updated-by` in `https://api.crossref.org/works/<doi>` (it includes the Retraction Watch database) and the publisher's page; Crossref's corrections and expressions of concern are incomplete. Retracted papers keep being cited as if valid. [Crossref-RW] [BarIlan-2017] Prefer the published version of a preprint, and say when only the preprint exists. Never put the teacher's email in Crossref's `mailto` parameter.
 - **Venue**: be wary of journals with deceptive operations, poor publication practice or little transparency about their process. [Cukier-2020]
 - **Interests**: `course-material/references/guidance/honesty.md` **Interests**. A vendor's own benchmark is `official` for what the product does, never evidence of how it compares.
+- **Its own reasoning**: read the passages you rely on as you would check course text, against the What to check sections of `course-material/references/guidance/reasoning-errors.md`, `course-material/references/guidance/evidence.md`, `course-material/references/guidance/honesty.md`, `course-material/references/guidance/knowledge-and-method.md` and the subject's file (**Weigh**). Each problem found (a fallacy, a claim stronger than its data, experts or consensus brushed aside, a mechanism offered as proof) lowers how far you rely on the source; name the problem and its What to check point wherever you cite or set aside the source.
 
 ## Weigh
 
-- Light research: the What to check sections of `course-material/references/guidance/evidence.md` and the subject's file below. A structured mini review, or findings about research evidence: also those of `course-material/references/guidance/honesty.md`, `course-material/references/guidance/reasoning-errors.md` and `course-material/references/guidance/knowledge-and-method.md`.
+- Weighing the evidence as a whole; each source's own reasoning is checked in every depth (**Check each source**). Light research: the What to check sections of `course-material/references/guidance/evidence.md` and the subject's file below. A structured mini review, or findings about research evidence: also those of `course-material/references/guidance/honesty.md`, `course-material/references/guidance/reasoning-errors.md` and `course-material/references/guidance/knowledge-and-method.md`.
 - By subject: `course-material/references/guidance/computing.md` for computing, software engineering and mathematics; `course-material/references/guidance/learning.md`, `course-material/references/guidance/course-design.md`, `course-material/references/guidance/exercises.md` and `course-material/references/guidance/engagement.md` for teaching questions; `course-material/references/guidance/course-production.md` for evaluating a course or a change; `course-material/references/accessibility.md` for accessibility.
 
 ## Verify
@@ -60,7 +61,7 @@ Decide from the question and say which in one line:
 In the teacher's language:
 
 - **Method**: question, depth, queries with where and when each ran and their counts, what wasn't searched; keep the same in the work folder while working. [PRISMA-S] [ESE-Writing-2022]
-- Numbered findings, each a claim with its source, the source's kind (`course-material/references/guidance/evidence.md`), date, and how settled the claim is: established, contested or preliminary. For practitioner sources, say where they come from, how many, their dates and who posts there. Give disagreements with both sides and where the course's text says otherwise. State what the sources say before your interpretation, and mark which is which. [ESE-Writing-2022]
+- Numbered findings, each a claim with its source, the source's kind (`course-material/references/guidance/evidence.md`), date, problems found in it (**Its own reasoning**), and how settled the claim is: established, contested or preliminary. For practitioner sources, say where they come from, how many, their dates and who posts there. Give disagreements with both sides and where the course's text says otherwise. State what the sources say before your interpretation, and mark which is which. [ESE-Writing-2022]
 - Give a finding's context, such as "in a study of first-year students", rather than leading with the author's name; name the person when the point is their opinion. [ESE-Writing-2022]
 - Limits: what the evidence doesn't cover, and where results may not carry over to the course's students. [ESE-Writing-2022]
 - When the teacher keeps a claim register, give its fields for consequential claims (`course-material/references/guidance/course-production.md` **Claim register**).

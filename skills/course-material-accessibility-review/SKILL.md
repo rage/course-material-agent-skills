@@ -11,7 +11,7 @@ description: "Review and fix the accessibility of courses.mooc.fi material again
 
 ## Collect
 
-Raw blocks of the pages in scope, exercise instructions (`get_exercise`), an axe run on each page's preview, and pages with tables, columns or images at phone width (commands in `course-material/references/visual-checks.md`). Run them before the report; with nothing staged, preview the published pages.
+Raw blocks of the pages in scope, exercise instructions (`get_exercise`), an axe run on each page's preview, and pages with tables, columns or images at phone width (commands in `course-material/references/visual-checks.md`), all before the report (`course-material/references/reviewing.md` **Shape**).
 
 ## Check
 
@@ -29,7 +29,7 @@ Raw blocks of the pages in scope, exercise instructions (`get_exercise`), an axe
 
 ## Report
 
-Blockers first (informative images without alt text, pages without headings, unreadable tables), then improvements.
+As `course-material/references/reviewing.md` **Findings**: blockers (informative images without alt text, pages without headings, unreadable tables) under Fix first.
 
 ## Fix
 

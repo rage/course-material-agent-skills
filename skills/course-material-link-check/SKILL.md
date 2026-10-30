@@ -28,7 +28,7 @@ description: "Find and fix broken or outdated links, images, files, videos and D
 
 ## Report
 
-A table: page, link text, URL, status, suggested fix; broken first, "check by hand" last.
+As `course-material/references/reviewing.md` **Findings**, broken links under Fix first. Each finding gives the link text, URL, status and suggested fix; links to check by hand in a list of their own.
 
 ## Fix
 

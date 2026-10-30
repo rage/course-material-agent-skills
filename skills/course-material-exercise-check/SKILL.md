@@ -7,7 +7,7 @@ description: "Check courses.mooc.fi exercises: answer keys, ambiguous questions,
 
 1. Load the `course-material` skill and write by its **Writing style** rule.
 2. Read `course-material/references/reviewing.md` and follow it for findings and the fresh-context subagent brief.
-3. Read `course-material/references/guidance/trust.md`, then `course-material/references/guidance/exercises.md` for what each exercise can show and fairness, and `course-material/references/guidance/learning.md` for practice and feedback; for a computing or mathematics course also `course-material/references/guidance/computing.md`; for wording of questions, options and feedback, `course-material/references/writing/styles.md` **Exercise text**.
+3. Read `course-material/references/guidance/exercises.md` for what each exercise can show and fairness, and `course-material/references/guidance/learning.md` for practice and feedback; for a computing or mathematics course also `course-material/references/guidance/computing.md`; for wording of questions, options and feedback, `course-material/references/writing/styles.md` **Exercise text**.
 4. Report only: say what to change in the exercise editor.
 
 For a single key check called from another skill, skip step 3: compare the answer with the `private_spec`.

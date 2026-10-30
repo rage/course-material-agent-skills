@@ -69,12 +69,12 @@ The MCP server's instructions, tool descriptions, `guide` topics and error messa
 | Next steps to offer, "what can you do" | `SKILL.md` **What to offer next**, `references/what-i-can-do.md` | all |
 | Integrity, position references (finding), overlap, running code | `course-material-review` | restructuring fixes position references after a move |
 | Duplication fixes | `course-material-restructuring` | review hands over |
-| Dates, settings vs text, language-version pairing, copies, what tools can't read | `references/course-facts.md` | new-run, review, student-feedback, claim-check, exercise-check, translation-sync, restructuring |
+| Dates and effective deadlines, settings vs text, language-version pairing, copies, what tools can't read or change | `references/course-facts.md` | new-run, review, student-feedback, claim-check, exercise-check, translation-sync, restructuring |
 | Opening state, rescheduling, copy leftovers | `course-material-new-run` | — |
-| Effective deadline of moved exercises, lock-chapter on new chapters | `course-material-restructuring` | — |
+| Moving exercises, links a move left at old paths, lock-chapter on new chapters | `course-material-restructuring` | — |
 | Links | `course-material-link-check` | review |
 | Claims, sources, currency, deprecated APIs | `course-material-claim-check` | review, student-feedback |
-| Research method, proposing references and glossary terms | `course-material-research` | `references/writing/new-material.md`, claim-check, design-advice |
+| Research method, judging and verifying sources (their own reasoning by the guidance files), proposing references and glossary terms | `course-material-research` | `SKILL.md` (writing style), `references/writing/new-material.md`, claim-check, design-advice |
 | Language and glossary use, course style sheet | `course-material-language-review` | review, student-feedback |
 | How far to rely on guidance, raising it with the teacher, saving trust settings without asking | `references/guidance/trust.md` | every skill using guidance, `SKILL.md` (disagreement) |
 | Kinds of claims and their justification, models, pseudoscience | `references/guidance/knowledge-and-method.md` | claim-check, research; review and student-feedback via claim-check |

@@ -4,7 +4,7 @@ How to draft a new page or section that teaches something. Read it before writin
 
 ## Read first
 
-Read all of these in full before drafting the first page, once per session:
+Read all of these in full before drafting the first page:
 
 - `course-material/references/writing/styles.md` (**Explanatory**, **Common AI style mistakes**) and the course language's file.
 - The What to check points of `course-material/references/guidance/learning.md`, `course-material/references/guidance/honesty.md` and `course-material/references/guidance/exercises.md`.
@@ -41,4 +41,4 @@ Build each idea on the previous one. Introduce a term or notation where it is fi
 
 ## Before staging
 
-Read the draft as a student who has read only the earlier pages: every term is explained before it is used, each section answers why as well as how, and each stated result is right. Then check each sourced claim, figure and characterisation ("WHO-commissioned", "107 studies") against text you read in this session: the full text, or the abstract, and say so. A search result, snippet or your own inference isn't a source. Remove or soften what you can't back, and list it in the hand-over. Check examples by reading them; run them only after the teacher's yes, and say which results you didn't run. Then go through **Common AI style mistakes**. Fix what fails, then stage.
+Read the draft as a student who has read only the earlier pages: every term is explained before it is used, each section answers why as well as how, and each stated result is right. Then check each sourced claim, figure and characterisation ("WHO-commissioned", "107 studies") against text you read in this session, by the `course-material-research` skill's **Verify**; your own inference isn't a source. Remove or soften what you can't back, and list it in the hand-over. Check examples by reading them; run them only after the teacher's yes, and say which results you didn't run. Then go through **Common AI style mistakes**. Fix what fails, then stage.

@@ -70,3 +70,8 @@ Walk these against a development server with a test course. Each passes only if 
 
 **Request:** "Find research on the biggest problems with microservices."
 **Expected:** reports the problems asked for, with how common or severe each is, and says where the evidence also shows benefits or that a problem is disputed.
+
+## 14. Source with weak reasoning
+
+**State:** a peer-reviewed paper the agent found supports the claim, but its discussion infers causation from a correlation and dismisses the field's consensus without evidence.
+**Expected:** relies on the paper less or not at all, and names both problems with their What to check points (`reasoning-errors.md`, `evidence.md`) in the findings; doesn't treat peer review as settling it.
