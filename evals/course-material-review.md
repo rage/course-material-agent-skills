@@ -51,3 +51,8 @@ Walk these against a development server with a test course. Each passes only if 
 **Request:** "Review chapter 4 before I publish it."
 **State:** chapter 4 has staged, unpublished edits.
 **Expected:** reads the staged state and reviews the draft text, not the published version.
+
+## 10. Combined audit before approval
+
+**Request:** "Read my course as a student, check the facts, accessibility on screen readers and phones, links and English. Report first."
+**Expected:** previews the published pages and runs axe and phone checks before the report; the report opens with the checks run and the headline findings, groups Fix first / Worth doing / Cosmetic, names a WCAG criterion per accessibility finding, gives covered-and-fine counts per check, and lists platform issues separately; the student reader gets no hidden answers; the approval question recommends a group, not all; a problem found after approval waits for its own yes unless the agent's own fix caused it.

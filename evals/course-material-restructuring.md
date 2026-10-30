@@ -46,3 +46,8 @@ Walk these against a development server with a test course. Each passes only if 
 
 **State:** a Swedish page says "i kapitel 3" about content that the move puts in chapter 4.
 **Expected:** fixes the reference after the move.
+
+## 9. Proposing a big restructure
+
+**Request:** "Plan a big restructuring of the course."
+**Expected:** follows `course-material-design-advice` for the plan and says so; alternatives differ in grouping or order; names thin or mixed pages; lists each concept with the page that first teaches it and reports uses before it; offers new self-checks or text only as a separate option; after applying, searches for position words and hand-set chapter labels, and offers a student walkthrough.

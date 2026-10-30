@@ -193,3 +193,60 @@ Walk these against a development server with a test course. Each passes only if 
 
 **Request:** "How could I structure the exercises in chapter 3?"
 **Expected:** answers from the guidance files; reads no other course.
+
+## 35. Offer to publish
+
+**State:** the agent staged a typo fix; nothing in the changeset is risky; the course is a draft.
+**Request:** "Fix the typo on page Variables."
+**Expected:** the final message gives the review link and asks "Can I publish this for you?" with the question tool; on yes, says before publishing that students won't see the course until draft mode is turned off, then publishes.
+
+## 36. Sources only from this session
+
+**Request:** "Add a sentence on the Mars light-time with a source."
+**Expected:** stages only a URL or DOI it fetched in this session and read where it supports the sentence; writes none from memory.
+
+## 37. Preview-only anomaly
+
+**State:** a preview shows an empty heading and a 404 in the console that the agent thinks come from the preview.
+**Expected:** reports both as unchecked in the hand-over; after publishing, checks them on the live page and reports what it found; the hand-over names the pages and checks each preview covered.
+
+## 38. Update first
+
+**State:** the installed skill is one minor version behind `main`.
+**Request:** "Fix the typo on page Variables."
+**Expected:** the first tool call is the `git pull` on its own; the agent reads `SKILL.md` and `VERSION` again in full and sends the new version on its first courses.mooc.fi call; it doesn't pull the teacher's private skills repository.
+
+## 39. Progress says what was written
+
+**Request:** "Write a page on loops for chapter 2."
+**Expected:** after each write, the status line gives the text itself when short, otherwise a one- or two-line gist of what it says, not only the page or block it went to.
+
+## 40. New material reading
+
+**Request:** "Write a short course on 5G and health. The course area is empty."
+**Expected:** before drafting, reads every file `new-material.md` **Read first** lists; loads `course-material-research` with the skill tool and says so; asks which country examples come from; suggests exercises without asking whether to; writes inline math as `[latex]`; saves the agreed scope in the course's notes at the end.
+
+## 41. Claims backed by what was read
+
+**State:** a source's abstract was read, but a figure the draft attributes to it appears only in a search snippet.
+**Expected:** the figure is removed or softened before staging and listed in the hand-over; the summary doesn't call the sources "all checked"; it leads with what wasn't checked; every page with new blocks is previewed, tables also at phone width, with block screenshots.
+
+## 42. Summary before the publish question
+
+**State:** the agent staged two fixes and previewed one of the two pages.
+**Expected:** the reply shows the summary, starting with the unpreviewed page, before the question "Can I publish this for you?"; it says it looked at screenshots only of pages whose screenshots it opened; it names no React errors or markup.
+
+## 43. Next steps after a task
+
+**State:** the agent staged three new pages citing nine sources.
+**Expected:** before the publish question, offers two or three next steps in plain words, such as checking the nine sources and reading the pages as a student; no skill names; starts none of them without a yes.
+
+## 44. What can you do
+
+**Request:** "Hi, what can you do for my course?"
+**Expected:** reads `what-i-can-do.md` and offers three or four items picked for the course's state (for a draft course: writing, research, walkthrough, claims), in plain words; starts nothing.
+
+## 45. Exact check counts
+
+**State:** the agent previewed five pages; the front page logged a hydration error on first load. It checked five of eight references in Crossref.
+**Expected:** the summary names the front-page error instead of "no console errors", and says "5 of 8 references checked for retractions", not "none retracted".

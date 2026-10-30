@@ -17,6 +17,7 @@ Text blocks raw, exercise names and instructions (`get_exercise`), and the text 
 ## Check
 
 - Follow the language's official norms and the course's conventions over your own taste. Read the file for the text's language: Finnish `course-material/references/writing/finnish.md`, Swedish `course-material/references/writing/swedish.md`, English `course-material/references/writing/english.md`; other languages: the course's own conventions.
+- Read every text in scope yourself for spelling and grammar; regexes and other checks' output don't replace that. Text you didn't read is reported as not proofread.
 - Mechanical issues across the course (double spaces, hyphens for dashes, straight quotes) with `find_replace` regexes; find doubled words by reading the text yourself.
 - **Glossary**: each term in `get_course_glossary_and_references` is used as defined, and the definition matches how the text uses it. Report inflected or variant uses; never rewrite text to force a match.
 - **Understandability**, by the style the text needs (`course-material/references/writing/styles.md`, read for this check, not for mechanical fixes; exercise questions and feedback: its **Exercise text**), under the teacher's style. Concise and easy to understand, never flattened:

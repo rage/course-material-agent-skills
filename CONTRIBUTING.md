@@ -40,6 +40,7 @@ The server stays compatible with every skill version at or above its minimum. Ch
 - Claude Code discovers skills only one level below its skills folder, so the setup links each task skill there. The git `post-merge` hook the setup installs relinks after every pull, so new and removed task skills need no extra step.
 - Codex scans its skills folder recursively and finds them in place.
 - A task skill's first step loads the main `course-material` skill.
+- A new, renamed or removed task skill also updates `references/what-i-can-do.md` and, when it fits a moment after a task, the **What to offer next** table in `SKILL.md`.
 - Name a reference file by its full path in the main skill's folder, `course-material/references/<file>.md`, in the step that needs it ("Read `course-material/references/reviewing.md` and follow it for …"). Never a relative path: in Claude Code the task skill is reached through a link, so `../..` points elsewhere.
 - To use another skill, say so in the step: "use the `course-material-link-check` skill's Check section for links".
 
@@ -59,11 +60,13 @@ The MCP server's instructions, tool descriptions, `guide` topics and error messa
 | Remembering, `.local/` | `SKILL.md` (short), `references/local.md` | all |
 | Tool and agent gotchas → drafted public issue | `references/skill-placement.md` | `SKILL.md`, `AGENT-SETUP.md` |
 | Rich-text markup in block attributes | `references/rich-text.md` | `SKILL.md` |
-| Writing new teaching material | `references/writing/new-material.md` | `SKILL.md` |
+| Writing new teaching material, citation choice | `references/writing/new-material.md` | `SKILL.md` |
 | Common AI style mistakes | `references/writing/styles.md` | `references/writing/new-material.md`, language-review |
-| Previews, screenshots, axe runs | `references/visual-checks.md` | `SKILL.md`, accessibility-review, link-check |
+| Previews, screenshots, axe runs, what a check covered | `references/visual-checks.md` | `SKILL.md`, accessibility-review, link-check |
 | Updating the skills | `references/updating.md` | `SKILL.md`, `AGENT-SETUP.md` |
+| Setup steps, loading the skills before course work | `AGENT-SETUP.md` | `SKILL.md` |
 | Setup and connection errors | `references/setup-errors.md` | `SKILL.md` |
+| Next steps to offer, "what can you do" | `SKILL.md` **What to offer next**, `references/what-i-can-do.md` | all |
 | Integrity, position references (finding), overlap, running code | `course-material-review` | restructuring fixes position references after a move |
 | Duplication fixes | `course-material-restructuring` | review hands over |
 | Dates, settings vs text, language-version pairing, copies, what tools can't read | `references/course-facts.md` | new-run, review, student-feedback, claim-check, exercise-check, translation-sync, restructuring |

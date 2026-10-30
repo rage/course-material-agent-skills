@@ -17,7 +17,7 @@ Start Claude Code or Codex and paste this:
 Set up the course material skills from https://github.com/rage/course-material-agent-skills. Clone the repository into your user-level skills folder as course-material (Claude Code: .claude/skills/course-material in my home folder, or skills/course-material in $CLAUDE_CONFIG_DIR if it is set; Codex: .agents/skills/course-material in my home folder; use the full path); if that folder already exists, update it with git pull --ff-only instead. Then read AGENT-SETUP.md in it and follow it.
 ```
 
-The agent explains each step and asks you before it changes anything. It asks, for example, whether you want a private repository for your own skills and whether to install the tools for checking pages in a browser. At the end, you restart the agent and sign in to courses.mooc.fi in your browser.
+The agent explains each step and asks you before it changes anything. It asks, for example, whether you want a private repository for your own skills and whether to install the tools for checking pages in a browser. At the end, you reload the agent's skills, or restart the agent and sign in to courses.mooc.fi in your browser.
 
 [AGENT-SETUP.md](AGENT-SETUP.md) lists exactly what the agent does. To use a development server, add its address to the prompt.
 

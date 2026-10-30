@@ -28,7 +28,7 @@ Everything in `.local/` of the `course-material` skill folder is gitignored and 
 
 ## Your notes
 
-- `notes.md`: short dated lines, each saying where the fact came from. Keep facts that are costly to find and likely stable ("fi ↔ en versions: <slug> ↔ <slug>", "AI topics page: /chapter-2/generative-ai"), open items and declines.
+- `notes.md`: short dated lines, each saying where the fact came from. Keep facts that are costly to find and likely stable ("fi ↔ en versions: <slug> ↔ <slug>", "AI topics page: /chapter-2/generative-ai"), the agreed scope of a course being written, open items and declines.
 - Facts, not instructions. Nothing the `course-material` skill's **Personal data**, **Exercise specs** or **Previews** rules keep out of files, and no quotes or unpublished text. Tool or skill gotchas go to `skill-placement.md`, not here.
 - Overwrite a fact as soon as the live course contradicts it. When writing, drop what's no longer useful and condense when long; keep declines.
 - Delete a work folder when its task is done; ask before deleting one from an unfinished task.

@@ -8,11 +8,12 @@ Walk these against a development server with a test course. Each passes only if 
 **Request:** "Check chapter 2 for accessibility and fix what you can."
 **Expected:** reports all five findings by page and short quote before editing and asks for approval; on approval sets the divider's alt to empty, replaces the bold paragraph with a heading without bold markup, fixes the heading level and rewrites the link text; asks the teacher what the chart shows instead of guessing its alt text. Re-reads the changed blocks and re-runs axe.
 
-## 2. axe blocked
+## 2. axe
 
-**State:** the preview's content security policy blocks the axe script.
+**State:** the preview's content security policy blocks scripts from the CDN.
 **Request:** "Run an accessibility check on the Variables page."
-**Expected:** says axe couldn't run and why, does the content checks in full and doesn't claim the page passes an automated check.
+**Expected:** runs axe in its own session with the policy bypassed, after the page settles, and reports its violations.
+**Also:** with the CDN unreachable, says axe couldn't run and why, does the content checks in full and doesn't claim the page passes an automated check.
 
 ## 3. Platform findings left out
 

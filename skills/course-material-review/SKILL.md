@@ -14,9 +14,10 @@ description: "Review a page, chapter or whole courses.mooc.fi course for many is
    - claims and currency: use the `course-material-claim-check` skill's Collect and Check sections; it needs web search or fetch tools, else report claims as not checked;
    - accessibility: use the `course-material-accessibility-review` skill's Collect and Check sections (the axe run is the part to fetch);
    - pedagogy, only when asked or named in `workflow.md`: the What to check sections of `course-material/references/guidance/course-design.md`, `course-material/references/guidance/learning.md`, `course-material/references/guidance/exercises.md` and `course-material/references/guidance/engagement.md` (computing or mathematics courses: also `course-material/references/guidance/computing.md`), after `course-material/references/guidance/trust.md`;
+   - reading as a student, when asked: the `course-material-student-walkthrough` skill's checks and subagent, its findings merged into the same report;
    - the review-only checks below.
-5. Report one merged list by `course-material/references/reviewing.md`. Mention `course-material-student-walkthrough` or `course-material-exercise-check` only when findings point there.
-6. Fix approved items by the Fix section of the check's skill. Show additions longer than a paragraph as draft text first, written by `course-material/references/writing/styles.md`. For duplication fixes, use the `course-material-restructuring` skill.
+5. Report one merged list by `course-material/references/reviewing.md`; it replaces the check skills' own report tables. Mention `course-material-student-walkthrough` or `course-material-exercise-check` only when findings point there.
+6. Fix approved items by the Fix section of the check's skill. Show additions longer than a paragraph as draft text first, written by `course-material/references/writing/styles.md` and `course-material/references/writing/new-material.md`, read again before drafting. When a finding is that a page asks too much at once, the rewrite is shorter than what it replaces. For duplication fixes, use the `course-material-restructuring` skill.
 
 ## Scope and checks
 

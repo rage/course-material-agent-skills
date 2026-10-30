@@ -11,7 +11,7 @@ description: "Review and fix the accessibility of courses.mooc.fi material again
 
 ## Collect
 
-Raw blocks of the pages in scope, exercise instructions (`get_exercise`), and an axe run on each page's preview (command in `course-material/references/visual-checks.md`).
+Raw blocks of the pages in scope, exercise instructions (`get_exercise`), an axe run on each page's preview, and pages with tables, columns or images at phone width (commands in `course-material/references/visual-checks.md`). Run them before the report; with nothing staged, preview the published pages.
 
 ## Check
 
@@ -23,7 +23,7 @@ Raw blocks of the pages in scope, exercise instructions (`get_exercise`), and an
 - **Colour**: meaning never carried by colour alone ("click the green button"); text contrast 4.5:1, large text and meaningful graphics 3:1.
 - **Media**: captions or transcripts; iframes with a title.
 - **Other languages**: passages in another language marked where the editor allows, else reported.
-- A clean axe run never replaces these checks. Leave out axe findings in the site header, footer and other platform parts: they aren't course content.
+- A clean axe run never replaces these checks. Axe findings in the site header, footer and other platform parts aren't course content: list them under platform issues (`course-material/references/reviewing.md`).
 - List linked PDFs and slides as not checked, and offer to check them with a local tool (installing only with consent).
 - One "Couldn't check" line for exercise widgets, video captions, contrast inside images and what images show when you can't see them.
 
