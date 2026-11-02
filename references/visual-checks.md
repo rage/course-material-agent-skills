@@ -1,6 +1,6 @@
 # Visual checks
 
-If `playwright-cli` has its own skill installed, it covers the details; these commands are enough here.
+The `playwright-cli` skill covers the details; these commands are enough here.
 
 ```bash
 playwright-cli open "<preview URL>"
@@ -22,7 +22,7 @@ playwright-cli close
 - Look for: missing or duplicated blocks, raw tags or `[latex]` shown as text, broken images, empty boxes, text overflowing its box, tables wider than a phone screen, and anything that differs from what you meant.
 - Something you put down to the preview (a failed request, an empty block or heading) stays a finding: after publishing, check it on the live page; if you can't, hand it over as unchecked.
 - Report what each check covered: which pages, and which of console, requests, snapshot, screenshot and axe ran on each. Never extend a result to pages you didn't open, and keep errors seen earlier: a page that logged an error is not "no console errors" because a later run counted none.
-- Installing `playwright-cli` needs the teacher's consent and Node.js; with both, follow AGENT-SETUP.md **Browser checks** in the `course-material` skill folder.
+- `playwright-cli` missing or failing: follow AGENT-SETUP.md **Browser checks** in the `course-material` skill folder; until its check passes, no edits (SKILL.md **Previews**).
 - Codex's default sandbox may block network access, so the browser can't reach the preview. Codex asks for approval; tell the teacher why you need it.
 
 ## axe
@@ -36,4 +36,4 @@ playwright-cli -s=axe goto "<next preview URL>"   # then run-code again
 playwright-cli -s=axe close
 ```
 
-`[]` means no violations. The wait matters: run before the page settles, axe reports half-rendered content. If the script doesn't load or `playwright-cli` is missing, say so; never claim the page passed an automated check.
+`[]` means no violations. The wait matters: run before the page settles, axe reports half-rendered content. If the script doesn't load, say so; never claim the page passed an automated check.

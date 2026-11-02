@@ -2,7 +2,7 @@
 
 You cloned this repository as `course-material` into the user-level skills folder: Claude Code `~/.claude/skills` (or `$CLAUDE_CONFIG_DIR/skills`), Codex `~/.agents/skills`. Below, `<skills folder>` is that folder and `<skill folder>` the clone, both absolute. On Windows, also follow [setup/windows.md](setup/windows.md).
 
-- Before each step, tell the teacher in one sentence what it does and ask with your question tool (Claude Code: AskUserQuestion; plain text if you have none), recommending an option. A yes there lets permission checks such as Claude Code's auto mode allow the step.
+- Before each step except 7, tell the teacher in one sentence what it does and ask with your question tool (Claude Code: AskUserQuestion; plain text if you have none), recommending an option. A yes there lets permission checks such as Claude Code's auto mode allow the step.
 - Run each step's commands on their own, never chained with another step's or with reads.
 - Never skip a step or part of one silently. If a step is refused or fails after the teacher's yes, give them the exact command to run themselves (Claude Code: type `! <command>` at the prompt) and wait for them to say it ran before going on.
 - Ask setup questions on their own, never in the same question batch as the teacher's course task.
@@ -70,7 +70,24 @@ Always ask: use an existing one, create one, or skip; when `<skill folder>/.loca
 
 ## 7. Browser checks
 
-If `playwright-cli --version` fails, ask whether to install it (needs Node.js): `npm install -g @playwright/cli@latest`. If it works and `<skills folder>/playwright-cli` is missing, in an empty scratch folder, run `playwright-cli install --skills=claude` (Codex: `--skills=agents`) and copy `.claude/skills/playwright-cli` (Codex: `.agents/skills/playwright-cli`) into `<skills folder>`.
+Required: previews need `playwright-cli`, its skill and a browser, and until the check at the end passes the agent only reads course material (SKILL.md **Previews**). Don't ask first; run each command and tell the teacher what you installed. When a permission prompt, sandbox or error stops a command, ask, saying the step is required. Never skip, decline or postpone it: whenever you're stuck, ask the teacher to install or run what's needed, with the exact command, wait, and go on from there. Being stuck is never a reason to stop. The commands below are defaults: if you know a better way to install on this system (its package manager, an existing Node.js version manager), use it, as long as the result is a `playwright-cli` command on `PATH` and the skill in the user-level skills folder. If a fix doesn't help, search the web for the exact error message and try what you find. Repeat until the check passes.
+
+1. Node.js 18 or newer (`node --version`). Missing: macOS `brew install node`, Windows `winget install OpenJS.NodeJS.LTS`, Linux the distribution's `nodejs` package or nvm. A new install may need a new terminal or an agent restart to show up on `PATH`.
+2. `playwright-cli --version`; if it fails, `npm install -g @playwright/cli@latest`. On EACCES, never sudo: `npm config set prefix ~/.npm-global`, add `~/.npm-global/bin` to `PATH` in the shell profile, install again. Windows: if PowerShell refuses to run `npm.ps1` or `playwright-cli.ps1`, call `npm.cmd` and `playwright-cli.cmd`, or with a yes run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
+3. `playwright-cli install-browser chromium`. On Linux, missing system libraries need `playwright-cli install-browser --with-deps chromium`, which asks for sudo: give it to the teacher.
+4. The skill goes in the user-level skills folder (Claude Code `~/.claude/skills`, Codex `~/.agents/skills`), also with a folder-only install. If `playwright-cli` is missing there, in an empty scratch folder run `playwright-cli install --skills=claude` (Codex: `--skills=agents`) and copy `.claude/skills/playwright-cli` (Codex: `.agents/skills/playwright-cli`) into it.
+5. Behind a proxy, set `HTTPS_PROXY` for npm and the browser download, and `PLAYWRIGHT_MCP_PROXY_SERVER` for the browser.
+6. Check:
+
+   ```bash
+   playwright-cli open "https://example.com"
+   playwright-cli eval "document.title"
+   playwright-cli close
+   ```
+
+   It passes when the title is `Example Domain` and `playwright-cli/SKILL.md` exists in the user-level skills folder. If the browser fails to start or reach the page only inside your sandbox (Codex blocks network by default), ask to run outside it; if that is refused, have the teacher run the three commands and paste the output.
+
+Only a harness that can't run command-line programs at all uses another browser tool: the Playwright MCP server (`@playwright/mcp`), or failing that any other way to load pages in Chrome and take screenshots, checked the same way. Where commands run, it is always `playwright-cli`: trouble installing it is never a reason to switch.
 
 ## 8. Summary
 

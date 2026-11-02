@@ -7,7 +7,7 @@ With these skills, an AI agent on your computer can check and maintain your cour
 - A teacher account on courses.mooc.fi with access to the course.
 - Claude Code or Codex installed on your computer. Other agents that support skills and MCP servers may work too.
 - Git installed on your computer.
-- Optional: Node.js, if you want the agent to check pages in a browser.
+- Node.js 18 or newer, so the agent can check pages in a browser. If it's missing, the agent installs it or tells you how.
 
 ## Set up
 
@@ -17,7 +17,7 @@ Start Claude Code or Codex and paste this:
 Set up the course material skills from https://github.com/rage/course-material-agent-skills. Clone the repository into your user-level skills folder as course-material (Claude Code: .claude/skills/course-material in my home folder, or skills/course-material in $CLAUDE_CONFIG_DIR if it is set; Codex: .agents/skills/course-material in my home folder; use the full path); if that folder already exists, update it with git pull --ff-only instead. Then read AGENT-SETUP.md in it and follow it.
 ```
 
-The agent explains each step and asks you before it changes anything. It asks, for example, whether you want a private repository for your own skills and whether to install the tools for checking pages in a browser. At the end, you reload the agent's skills, or restart the agent and sign in to courses.mooc.fi in your browser.
+The agent explains each step and asks you before it changes anything. It asks, for example, whether you want a private repository for your own skills. Last, it installs the tools for checking pages in a browser and checks that they work. This step is required: if the agent can't install something itself, it gives you the commands to run, and until the tools work it only reads your course. At the end, you reload the agent's skills, or restart the agent and sign in to courses.mooc.fi in your browser.
 
 [AGENT-SETUP.md](AGENT-SETUP.md) lists exactly what the agent does. To use a development server, add its address to the prompt.
 
@@ -60,7 +60,7 @@ You can edit these files yourself. The files `preferences.example.md`, `course-r
 
 The agent also keeps short notes about each course there, such as which courses are language versions of each other, and keeps them tidy.
 
-Some things are never remembered: the agent always asks you before it publishes, makes changes that could affect students, installs software or runs code.
+Some things are never remembered: the agent always asks you before it publishes, makes changes that could affect students, installs software (apart from the browser tools in setup) or runs code.
 
 The `.local` folder stays on your computer. It is lost if you delete the skills folder or clone it again. If you use two agents, for example Claude Code and Codex, each has its own folder and its own memory.
 

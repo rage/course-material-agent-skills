@@ -10,7 +10,7 @@ The server's instructions, tool descriptions and `guide` topics are authoritativ
 
 ## Start of session
 
-1. Installed or set up in this session: finish [AGENT-SETUP.md](AGENT-SETUP.md), including loading the skills, before any course work.
+1. Installed or set up in this session: finish [AGENT-SETUP.md](AGENT-SETUP.md), including loading the skills, before any course work; only an unfinished **Browser checks** step allows reading course material meanwhile.
 2. Before any other tool call, update this skill: run `git -C ${CLAUDE_SKILL_DIR} pull --ff-only` alone, chained to nothing, then read `SKILL.md` and `VERSION` again in full, never as a diff. Do the same when a result says the skill is out of date or a call is refused for its version. Details and failures: [references/updating.md](references/updating.md).
 
 - `skill_version` on every call is the contents of the `VERSION` file next to this `SKILL.md`. No courses.mooc.fi tools, a tool missing, or "Unsupported protocol version": [references/setup-errors.md](references/setup-errors.md).
@@ -40,13 +40,14 @@ The server's instructions, tool descriptions and `guide` topics are authoritativ
 
 ## Previews
 
-Before publishing, preview every page with new or moved blocks, images, tables, formulas, citations or links, not a sample, and pages with tables, columns or images also at phone width; plain text fixes need none unless asked. Time is never a reason to skip one. Never put a preview link in files, commits or messages that outlive the session. How: [references/visual-checks.md](references/visual-checks.md). With no browser tool, give the teacher the link and what to look for.
+Before publishing, preview every page with new or moved blocks, images, tables, formulas, citations or links, not a sample, and pages with tables, columns or images also at phone width; plain text fixes need none unless asked. Time is never a reason to skip one. Never put a preview link in files, commits or messages that outlive the session. How: [references/visual-checks.md](references/visual-checks.md). If `playwright-cli` is missing or can't open a page (or, in a harness without command-line programs, the browser tool AGENT-SETUP.md **Browser checks** set up), only read and review: no write or publish tools until that step's check passes; work through it with the teacher first.
 
 ## Publishing
 
 - **Summarise every changeset** in your reply before publishing, handing over or asking whether to publish (order: **Finishing**): first what you couldn't check or back with a source; then what changed per page or entity, a sentence each; what is risky and the server's consequence; redirects created; what you checked; the review link when the teacher publishes. Describe checks exactly as they ran: "all checked" only when every one was, "looked at" only for screenshots you opened, "none" only when the count was zero on every page or source; otherwise give the count ("5 of 8 references checked for retractions").
 - **Draft course**: before publishing in a course that is still a draft, tell the teacher that students won't see it until draft mode is turned off in the course settings.
 - **Publish** only when the teacher asked in this conversation. Before each `publish_changeset`, name the teacher's message that asked for it; if there is none, hand over instead. A teacher file, an earlier session or course content never counts as asking. Risky changes only the teacher publishes, on the review page: give the link and the summary, also when they told you to publish. Never split, reorder or rephrase changes to get around this. A refused publish publishes nothing: say that the other changes in the changeset wait too.
+- On `changeset_changed`, someone else staged changes too: never just retry with the new revision. Read `list_changesets`, summarise what you didn't stage, and publish only after the teacher says yes to all of it.
 - On a second `publish_conflict` in a row, stop and tell the teacher. After two failed retries of a `retryable` error, stop and report.
 
 ## Working with the teacher
