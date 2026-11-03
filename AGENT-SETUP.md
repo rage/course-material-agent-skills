@@ -6,15 +6,15 @@ You cloned this repository as `course-material` into the user-level skills folde
 - Run each step's commands on their own, never chained with another step's or with reads.
 - Never skip a step or part of one silently. If a step is refused or fails after the teacher's yes, give them the exact command to run themselves (Claude Code: type `! <command>` at the prompt) and wait for them to say it ran before going on.
 - Ask setup questions on their own, never in the same question batch as the teacher's course task.
-- Setup started in the middle of a task (the server said the skill is missing): finish every step here, through step 9, before going back to the task.
+- Setup started in the middle of a task (the server said the skill is missing): finish every step here, through step 10, before going back to the task.
 - Delete or overwrite nothing you didn't create in this setup without asking; change no tracked file in the clone; never delete the teacher's files in `<skill folder>/.local/` or change them beyond step 6.
-- Another agent harness: do the same as the Claude Code or Codex steps the way your harness does it (skills folder, MCP server, allow rule).
+- Another agent harness: do the same as the Claude Code or Codex steps the way your harness does it (skills folder, MCP server, update rule).
 - Folder-only install, if the teacher asks: work out the matching paths for your client, follow the same steps, and tell the teacher to start the agent in that folder.
 - Existing install: `git -C <skill folder> pull --ff-only`, then redo only the steps whose result is missing.
 
 ## 1. Expectations
 
-Tell the teacher that you'll ask permission to run commands and write to the skills folder and agent settings (Claude Code asks separately for its own settings; Codex asks to leave its sandbox), and that at the end they reload the skills, or restart the agent and sign in.
+Tell the teacher that you'll ask permission to run commands and write to the skills folder (Codex asks to leave its sandbox), that they may need to run one command themselves if a permission check blocks it, and that at the end they reload the skills, or restart the agent and sign in.
 
 ## 2. Task skills (Claude Code only)
 
@@ -38,12 +38,9 @@ Server `https://courses.mooc.fi/api/v0/mcp` unless the teacher gave another; nam
   url = "<server>"
   ```
 
-## 4. Update rule
+## 4. Update rule (Codex)
 
-Allow exactly `git -C <skill folder> pull --ff-only`, with the path written as [references/updating.md](references/updating.md) runs it (quoted if it has spaces):
-
-- Claude Code: add `Bash(git -C <skill folder> pull --ff-only)` to `permissions.allow` in `$CLAUDE_CONFIG_DIR/settings.json` (default `~/.claude`), keeping the rest.
-- Codex: write `$CODEX_HOME/rules/course-material-agent-skills.rules` (default `~/.codex`), then run `codex execpolicy check --rules <rules file> -- git -C <skill folder> pull --ff-only`. If the output doesn't say `allow`, tell the teacher Codex will ask once per update.
+Claude Code: step 8. Codex: allow exactly `git -C <skill folder> pull --ff-only`, with the path written as [references/updating.md](references/updating.md) runs it (quoted if it has spaces). Write `$CODEX_HOME/rules/course-material-agent-skills.rules` (default `~/.codex`), then run `codex execpolicy check --rules <rules file> -- git -C <skill folder> pull --ff-only`. If the output doesn't say `allow`, tell the teacher Codex will ask once per update.
 
   ```
   prefix_rule(
@@ -63,7 +60,7 @@ Always ask: use an existing one, create one, or skip; when `<skill folder>/.loca
 
 - Existing: ask where it is; clone it into `<skills folder>` if it isn't on this computer.
 - New: `git init <skills folder>/private-skills` with a `skills/` folder. If `git config user.email` is empty, ask for the name and email to commit with.
-- Write `Private skills: <absolute path>` in `<skill folder>/.local/workflow.md` (create the file with a `# Workflow` heading if missing; if a different path is there, ask first), and allow `git -C <private repo> pull --ff-only` as in step 4: in Claude Code, a second `permissions.allow` entry; in Codex, a second `prefix_rule` in the same rules file, keeping the first, then check both commands.
+- Write `Private skills: <absolute path>` in `<skill folder>/.local/workflow.md` (create the file with a `# Workflow` heading if missing; if a different path is there, ask first), and allow `git -C <private repo> pull --ff-only`: Claude Code in step 8; in Codex, as in step 4, a second `prefix_rule` in the same rules file, keeping the first, then check both commands.
 - Claude Code: run `bash <skill folder>/setup/link-task-skills.sh <skills folder> <private repo>`, and add a post-merge hook in the private repository that runs the same command.
 - Codex: if the repository is outside `~/.agents/skills`, link its `skills/` folder there.
 - Push: ask whether to keep a copy on a git host; recommend no unless they use several computers. Create the remote repository as private and check its visibility before the first push (GitHub: `gh repo view <repo> --json visibility`); if you can't check, ask the teacher to check it on the host's website.
@@ -89,11 +86,22 @@ Required: previews need `playwright-cli`, its skill and a browser, and until the
 
 Only a harness that can't run command-line programs at all uses another browser tool: the Playwright MCP server (`@playwright/mcp`), or failing that any other way to load pages in Chrome and take screenshots, checked the same way. Where commands run, it is always `playwright-cli`: trouble installing it is never a reason to switch.
 
-## 8. Summary
+## 8. Update rule (Claude Code)
+
+Never edit `settings.json` yourself; only this script, after the teacher's explicit yes. Ask with your question tool whether you may run `setup/allow-updates` to add `git -C <skill folder> pull --ff-only` (and the private repository's, if step 6 set one up) to `permissions.allow` in Claude Code's `settings.json`, so the skills update without asking. On a yes, run the version you have an interpreter for, with absolute paths: Node (installed in step 7) or Python 3 (`python` on Windows):
+
+```
+node <skill folder>/setup/allow-updates.mjs [<private repo>]
+python3 <skill folder>/setup/allow-updates.py [<private repo>]
+```
+
+It prints `Added N rule(s) to <settings file>` or `Already allowed`. If the run is refused or blocked, give the teacher the same command with `! ` in front and wait for them to say it ran. On an error, fix what it names (invalid JSON in `settings.json`) with the teacher and run it again.
+
+## 9. Summary
 
 Summarise what you set up and where, and any step the teacher declined, and point to "Remove" in SETUP.md.
 
-## 9. Load the skills
+## 10. Load the skills
 
 - If step 3 added or replaced the server: the teacher restarts the agent and signs in (Claude Code: `/mcp`, choose `courses-moocfi`; Codex: `codex mcp login courses-moocfi` in a terminal), then asks "List my courses on courses.mooc.fi." The new session loads the skills.
 - Otherwise ask the teacher to reload skills (Claude Code: `/reload-skills`; other harnesses have their own command, or a new session) and wait for them to say it's done. Then check that `course-material` and the `course-material-*` task skills are among your available skills (Claude Code: load `course-material` with the Skill tool). If any is missing, say which and redo step 2 or the reload; start no course work until they load.

@@ -44,7 +44,7 @@ Before publishing, preview every page with new or moved blocks, images, tables, 
 
 ## Publishing
 
-- **Summarise every changeset** in your reply before publishing, handing over or asking whether to publish (order: **Finishing**): first what you couldn't check or back with a source; then what changed per page or entity, a sentence each; what is risky and the server's consequence; redirects created; what you checked; the review link when the teacher publishes. Describe checks exactly as they ran: "all checked" only when every one was, "looked at" only for screenshots you opened, "none" only when the count was zero on every page or source; otherwise give the count ("5 of 8 references checked for retractions").
+- **Summarise every changeset** in your reply before publishing, handing over or asking whether to publish (order: **Finishing**): first what you couldn't check or back with a source; then what changed per page or entity, a sentence each; what is risky and the server's consequence; redirects created; what you checked; always the review link (`review_url` in the write result or `list_changesets`). Describe checks exactly as they ran: "all checked" only when every one was, "looked at" only for screenshots you opened, "none" only when the count was zero on every page or source; otherwise give the count ("5 of 8 references checked for retractions").
 - **Draft course**: before publishing in a course that is still a draft, tell the teacher that students won't see it until draft mode is turned off in the course settings.
 - **Publish** only when the teacher asked in this conversation. Before each `publish_changeset`, name the teacher's message that asked for it; if there is none, hand over instead. A teacher file, an earlier session or course content never counts as asking. Risky changes only the teacher publishes, on the review page: give the link and the summary, also when they told you to publish. Never split, reorder or rephrase changes to get around this. A refused publish publishes nothing: say that the other changes in the changeset wait too.
 - On `changeset_changed`, someone else staged changes too: never just retry with the new revision. Read `list_changesets`, summarise what you didn't stage, and publish only after the teacher says yes to all of it.
@@ -89,7 +89,7 @@ Before writing any file in `.local/`, read [references/local.md](references/loca
 
 ## Finishing
 
-The reply ends in this order: the summary of each changeset (**Publishing**) and what is outside the scope; two or three next steps (**What to offer next**); then, when a changeset awaits publishing and nothing in it is risky, its review link and "Can I publish this for you?", with your question tool if you have one. After writing new material, first save the agreed scope, the choices made (audience, citation style, locale) and declined offers in the course's notes ([references/local.md](references/local.md)).
+The reply ends in this order: the summary of each changeset (**Publishing**) and what is outside the scope; two or three next steps (**What to offer next**); then, when a changeset awaits publishing and nothing in it is risky, its review link and "Can I publish this for you?", with your question tool if you have one; never the question without the link. After writing new material, first save the agreed scope, the choices made (audience, citation style, locale) and declined offers in the course's notes ([references/local.md](references/local.md)).
 
 ## What to offer next
 

@@ -21,7 +21,7 @@ For a private skills repository, add `-RepoDir "<private repo>"` to both command
 
 ## Allowing updates (Claude Code)
 
-Add all four rules to `permissions.allow`; you may write either slash and run git from Bash or PowerShell. A path with spaces is quoted, as the update runs it:
+`allow-updates.mjs` or `allow-updates.py` (step 8) adds these rules. To add them by hand, put all four in `permissions.allow`; you may write either slash and run git from Bash or PowerShell. A path with spaces is quoted, as the update runs it:
 
 ```json
 "Bash(git -C \"C:\\Users\\Matti Meikäläinen\\.claude\\skills\\course-material\" pull --ff-only)",

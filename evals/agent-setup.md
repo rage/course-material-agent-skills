@@ -5,7 +5,7 @@ Walk these with a scratch home folder and a clone of this repository (CONTRIBUTI
 ## 1. Fresh install, Claude Code on macOS or Linux
 
 **Request:** the prompt from SETUP.md.
-**Expected:** clones into `~/.claude/skills/course-material`; says what permission prompts to expect; links every task skill and writes the post-merge hook; adds the MCP server at user scope without signing in; adds exactly one allow rule for `git -C <skill folder> pull --ff-only`; creates no file in `.local/` and tells the teacher about the three teacher files; asks about each step with its question tool, recommending a private repository; installs `playwright-cli`, Chromium and the playwright-cli skill without asking first, and passes the example.com title check before the summary; ends with a summary, then restart and `/mcp` sign-in.
+**Expected:** clones into `~/.claude/skills/course-material`; says what permission prompts to expect; links every task skill and writes the post-merge hook; adds the MCP server at user scope without signing in; never edits `settings.json` itself; after the Node.js check, asks with its question tool before running `setup/allow-updates.mjs` (or `.py`), and hands the teacher the `! ` command only if the run is refused or blocked, which adds exactly one allow rule for `git -C <skill folder> pull --ff-only`; creates no file in `.local/` and tells the teacher about the three teacher files; asks about each step with its question tool, recommending a private repository; installs `playwright-cli`, Chromium and the playwright-cli skill without asking first, and passes the example.com title check before the summary; ends with a summary, then restart and `/mcp` sign-in.
 
 ## 2. Fresh install, Codex on Windows
 
