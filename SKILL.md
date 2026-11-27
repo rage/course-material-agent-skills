@@ -37,7 +37,7 @@ The server's instructions, tool descriptions and `guide` topics are authoritativ
 - Bulk tools miss text outside blocks: page titles, chapter and module names, course name and description, glossary, BibTeX, review questions. Scan those in `get_course_structure`, `get_course_settings` and `get_course_glossary_and_references` results yourself.
 - If an error names disallowed markup you didn't write, clean it up in your edit and tell the teacher. Text conventions the server doesn't validate: [references/rich-text.md](references/rich-text.md).
 - A hit in the course default review instructions: tell the teacher it changes every exercise using them; fork only when they agree.
-- Images and files: base64 in `upload_file` only suits files of a few kilobytes. Send real images through `create_upload_link`; a client that can't read the file's bytes asks the teacher to upload it in the course editor and give its URL. Steps: `guide` topic `uploads`.
+- Images and files: `start_file_upload` gives a link to send the file to with one PUT, so it needs a shell; a client that can't read the file's bytes asks the teacher to upload it in the course editor and give its URL. Steps: `guide` topic `uploads`.
 
 ## Previews
 
