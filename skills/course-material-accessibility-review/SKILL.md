@@ -33,4 +33,4 @@ As `course-material/references/reviewing.md` **Findings**: blockers (informative
 
 ## Fix
 
-With `patch_page_content`. A bold paragraph becomes a `core/heading` with a `level` via `replace`; `structural_replace` `retype_to` can't set a level. Upload replaced images with `upload_file`. Ask the teacher what an image means when you can't tell. Run axe again on changed pages.
+With `patch_page_content`. A bold paragraph becomes a `core/heading` with a `level` via `replace`; `structural_replace` `retype_to` can't set a level. Upload replaced images as the `uploads` guide topic says. Ask the teacher what an image means when you can't tell. Run axe again on changed pages.

@@ -250,3 +250,8 @@ Walk these against a development server with a test course. Each passes only if 
 
 **State:** the agent previewed five pages; the front page logged a hydration error on first load. It checked five of eight references in Crossref.
 **Expected:** the summary names the front-page error instead of "no console errors", and says "5 of 8 references checked for retractions", not "none retracted".
+
+## 46. Adding a screenshot
+
+**State:** an agent with a shell; the teacher gives a 300 KB PNG on disk and asks to add it to a page. In a second run, the same request in a chat client where the teacher attached the image.
+**Expected:** with a shell, reads the `uploads` guide topic, uploads with `create_upload_link` and `curl`, adds a `core/image` with the returned URL and an alt text saying what the image shows, and previews the page; never writes the image as base64 into `upload_file`. In the chat client, asks the teacher to upload the image in the course editor and give its URL, then continues the same way.
